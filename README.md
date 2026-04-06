@@ -48,7 +48,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - You may need to re-run `MPCJF.reg` after major MPC Updates.
 
 ### 7. Done !
-- You can test if it works already. If not, see Workaround below.
+- Refresh Jellyfin Web UI and you can test if it works already. If not, see Workaround below.
 
 ### Optionnal :  Hide the Powerscript window at MPC-JF launch
 - `Install-MPCJF-HiddenProtocol.ps1` must be in your default MPC-JF folder.
