@@ -81,7 +81,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ### Troubleshooting :
 - Sometimes if it stop working, because of idk, **MPC updates** or some specific settings change, just **re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`).
-- If MPC takes time to launch the media, it's because HDDs are in standby, the script is waiting for your HDD to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
+- If MPC takes time to launch the media, it's because HDDs are in standby and MPC is waiting for them to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
 [jellyfin-nas-hdd-spinup](https://github.com/Damocles-fr/jellyfin-nas-hdd-spinup)
 - To uninstall `Install-MPCJF-HiddenProtocol.ps1` : run in Powershell :
      ```
