@@ -33,17 +33,17 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	##### - To allow modifications, and so it doesn’t get overwritten if I update this script, uncheck Allow Updates & Allow Modification.
 	###### To find and modify the installed `MPCJF.user.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
 	
-### 3bis. (optional) and/or : Installation for Jellyfin Media Player (JMP Desktop Windows App)
+### 3bis. (optional) : Installation for Jellyfin Media Player (JMP Desktop Windows App)
 - Install the **[JavaScript Injector plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)** on your Jellyfin server if it is not already installed. A server restart may be required.
-- Go to: Jellyfin admin Dashboard => **Dashboard => JS Injector => Add Script**
+- Go to: Jellyfin => **Admin Dashboard => JS Injector => Add Script**
 - Name it MPCJF or whatever, then copy/paste the entire `MPC-JF-JSinjector-deviceID.js` script.
-- On the Windows PC where **Jellyfin Media Player** is installed, go to: `C:\Users\YourUserName\AppData\Local\JellyfinMediaPlayer\logs\`
+- On the PC where **Jellyfin Media Player** is installed, go to your corresponding `C:\Users\YourUserName\AppData\Local\JellyfinMediaPlayer\logs\`
 - Open `JellyfinMediaPlayer.log` with Notepad.
-- Press `Ctrl + F` and search for: `deviceId: `
-- You should find a line containing `deviceId:` `*long random string*`
+- Press `Ctrl + F` and search for: `deviceId: ` (preferably at the bottom)
+- You should find a line containing `deviceId:` `long random string`
 - Copy just that `long random string`
 - Go back to your script in: **Dashboard => JS Injector**
-- Paste/Replace: `PUT_DEVICE_ID_HERE` with your copied JMP `deviceId`.
+- Paste/Replace: `PUT_DEVICE_ID_HERE` with your `long random string` device Id.
 - Click **Enabled**, then click **Save**.
 
 ##### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
