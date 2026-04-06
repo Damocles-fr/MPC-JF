@@ -4,7 +4,7 @@
 </p>
 
 ### ▸ MPC-BE & MPC-HC & Potplayer Support, may support other media players .exe by following step #2
-### ▸ Tested with Jellyfin Web 10.11+, Jellyfin Media Player (Windows), Web UI on Firefox-based and Chrome-based browsers, Windows 11, local or NAS Jellyfin Server,
+### ▸ Tested with Jellyfin Web 10.11+, Jellyfin Media Player (Windows), Web UI on Firefox-based and Chrome-based browsers, Windows 11, local or NAS Jellyfin Server
 ## Installation Steps
 ### 0. Download MPC-JF.zip
 Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
