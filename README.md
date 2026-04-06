@@ -21,7 +21,7 @@ Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damoc
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ### 4. Install MPC-JF.js userscript
-- Install the .js userscript, one click link : [MPC-JF.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPC-JF.js)
+- Install the .js userscript, link : [MPC-JF.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPC-JF.js)
 - If your Jellyfin Server is not set the default adress ``` http://localhost:8096/ ``` : edit `MPC-JF.js` to replace ``` http://localhost:8096/ ``` with your Jellyfin web URL, for exemple :
   ```
   // @match        http://192.168.1.10:8096/*
@@ -86,7 +86,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ---
 
-#### TIPS
+#### TIPS :
 - Sometimes if it stop working, because of idk, **MPC-JF updates** or some specific settings change, just **re-run** `MPC-JF.reg` & `Install-MPC-JF-HiddenProtocol.ps1`.
 - If MPC takes time to launch, it's because HDDs are in standby, the script is waiting for your HDD to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
 [jellyfin-nas-hdd-spinup](https://github.com/Damocles-fr/jellyfin-nas-hdd-spinup)
