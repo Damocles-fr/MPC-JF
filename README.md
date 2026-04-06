@@ -22,14 +22,14 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	###### Alternatively you can use TamperMonkey or any userscript extension
 	###### MPCJF.js can be put in Jellyfin JavaScript Injector plugin instead, but every play buttons in Jellyfin Web won't work anywhere else without MPC-JF.
 
-### 4. Install MPCJF.js userscript in ViolentMonkey
-- Install MPCJF.js into ViolentMonkey, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
+### 4. Install MPCJF userscript in ViolentMonkey
+- Install the .js into ViolentMonkey, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
 - If your Jellyfin Server is not set the default adress ``` http://localhost:8096/ ``` : Select **Modify** to replace ``` http://localhost:8096/ ``` with your Jellyfin web URL, for exemple :
   ```
   // @match        http://192.168.1.10:8096/*
   ```
 	##### - Don't forget the * at the end.
-	##### - If you did any change, Uncheck Allow Updates & Allow Modification so you don't have to do it again if I update this script.
+	##### - To allow modify, and so it don't ger overwrite if I update this script, Uncheck Allow Updates & Allow Modification 
 	###### To find and modify the installed `MPCJF.user.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
 
 ### 5. Enable PowerShell Scripts Execution to allow MPCJF.ps1
@@ -81,6 +81,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ### Troubleshooting :
 - Sometimes if it stop working, because of idk, **MPC updates** or some specific settings change, just **re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`).
+- If you change your server adress : modify the installed **MPCJF** userscript : Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > MPC-JF ***`</>`***
 - If MPC takes time to launch the media, it's because HDDs are in standby and MPC is waiting for them to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
 [jellyfin-nas-hdd-spinup](https://github.com/Damocles-fr/jellyfin-nas-hdd-spinup)
 - To uninstall `Install-MPCJF-HiddenProtocol.ps1` : run in Powershell :
