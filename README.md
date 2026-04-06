@@ -1,4 +1,4 @@
-# MPC-JF - External media player launcher script for Jellyfin Web
+# MPC-JF - External media player launcher for Jellyfin Web
 ### MPC-HC & MPC-BE Support, may work with other media players .exe by following step #2
 ## Installation Steps
 
