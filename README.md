@@ -22,7 +22,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 ###### Alternatively you can use TamperMonkey or any userscript extension
 ###### MPCJF.js can be put in Jellyfin JavaScript Injector plugin instead, but every play buttons in Jellyfin Web won't work anywhere else without MPC-JF.
 
-### 4. Install MPCJF.js userscript
+### 4. Install MPCJF.js userscript in ViolentMonkey
 - Install the .js userscript, link : [MPCJF.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.js)
 - If your Jellyfin Server is not set the default adress ``` http://localhost:8096/ ``` : edit `MPCJF.js` to replace ``` http://localhost:8096/ ``` with your Jellyfin web URL, for exemple :
   ```
