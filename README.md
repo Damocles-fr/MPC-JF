@@ -96,7 +96,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ---
 
-### Troubleshooting :
+### TIPS :
 - Sometimes if it stop working, because of idk, **MPC updates** or some specific settings change, just **re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`).
 - If you change your server adress : modify the installed **MPCJF** userscript : Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** → MPC-JF ***`</>`***
 - If Jellyfin removed or changed you JMP deviceId : re-do step 4.
@@ -109,7 +109,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
      ```
 - The .js userscript can be put in Jellyfin JavaScript Injector plugin instead, but every play buttons in Jellyfin Web won't work anywhere else without MPC and MPC-JF.
 - If you use the Firefox extension ``` Dark Reader ``` , it breaks Jellyfin pictures loading in browsers, desactivate it only for jellyfin : Go into Dark Reader settings while you have the Jellyfin page open (firefox menu bar), click to  Jellyfin URL.
-- Here is my guide with many quality-of-life improvements for using Jellyfin in a Web browser (auto-start server, fullscreen UI, shortcuts folders links, etc.) : [PPFJ](https://github.com/Damocles-fr/PPJF/)
+- Here is my guide with many **quality-of-life improvements** for using Jellyfin in a Web browser (auto-start server, fullscreen UI, shortcuts folders links, etc.) : [PPFJ](https://github.com/Damocles-fr/PPJF/)
 
 ---
 
@@ -117,7 +117,8 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - ``` MPCJF.ps1 ``` : Do not delete. Main Script.
 - ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script don't run anymore, maybe after some MPC updates.
 - ``` Install-MPCJF-HiddenProtocol.ps1 ``` : One time run to hide the Powershell window at MPC launch. You may need to run it again if the script don't run hidden anymore
-- ``` MPCJF.js ``` : backup file of the main browser script, it's also in ViolentMonkey in your browser. Use this one if an auto-update of the script have broken things for your version.
+- ``` MPCJF.user.js ``` : backup file of the main browser script, it's also in ViolentMonkey in your browser. Use this one if an auto-update of the script have broken things for your version.
+- ``` MPC-JF-JSinjector-deviceID.js ``` : Jellyfin Media Player (Desktop) JS Injector script.
 
 ---
 
