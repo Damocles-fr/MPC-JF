@@ -24,13 +24,13 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ### 4. Install MPCJF.js userscript in ViolentMonkey
 - Install MPCJF.js into ViolentMonkey, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
-- If your Jellyfin Server is not set the default adress ``` http://localhost:8096/ ``` : edit `MPCJF.js` to replace ``` http://localhost:8096/ ``` with your Jellyfin web URL, for exemple :
+- If your Jellyfin Server is not set the default adress ``` http://localhost:8096/ ``` : Select **Modify** to replace ``` http://localhost:8096/ ``` with your Jellyfin web URL, for exemple :
   ```
   // @match        http://192.168.1.10:8096/*
   ```
 	##### - Don't forget the * at the end.
 	##### - If you did any change, Uncheck Allow Updates & Allow Modification so you don't have to do it again if I update this script.
-	###### To find and modify the installed `MPCJF.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
+	###### To find and modify the installed `MPCJF.user.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
 
 ### 5. Enable PowerShell Scripts Execution to allow MPCJF.ps1
 - In Windows 11, go to, Settings → Developers → PowerShell → Allow unsigned scripts
