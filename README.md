@@ -20,7 +20,7 @@ Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damoc
 - Edit the file `MPCJF.ps1` and replace the path ***in the last line*** with ***your own*** corresponding path. (MPC-HC or any other player path)
 - E.g. for PotPlayer default path : ``` & "C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe" "`"$path`"" ```
 
-### 3. Installation for Web Browser (optional but recommended)
+### 3. (Recommended) Installation for Web Browser 
 - In your web browser, install ViolentMonkey extension :
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	###### Alternatively you can use TamperMonkey or any userscript extension
@@ -33,7 +33,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	##### - To allow modifications, and so it doesn’t get overwritten if I update this script, uncheck Allow Updates & Allow Modification.
 	###### To find and modify the installed `MPCJF.user.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
 	
-### 4. (optional) : Installation for Jellyfin Media Player (JMP Desktop Windows App)
+### 4. (Optional) : Installation for Jellyfin Media Player (JMP Desktop Windows App)
 - Install the **[JavaScript Injector plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)** on your Jellyfin server if it is not already installed. A server restart may be required.
 - Go to: Jellyfin => **Admin Dashboard => JS Injector => Add Script**
 - Name it MPCJF or whatever, then copy/paste the entire `MPC-JF-JSinjector-deviceID.js` script.
