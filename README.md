@@ -79,7 +79,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ---
 
-### Workaround : If MPC starts but fail to launch the media
+### Workaround : If the Media Player starts but fail to launch the media
 - Your NAS/network drives must be mount with a letter like D:\ E:\ ... in Windows.
 - Edit "MPCJF.ps1" located in ``` C:\ProgramData\MPC-JF ```
   	- At the end of the file, just below : ``` # YOUR NAS CONFIG, IF NEEDED, ADD YOUR OWN WORKAROUND JUST BELOW ```
