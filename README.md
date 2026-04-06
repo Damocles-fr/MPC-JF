@@ -16,9 +16,11 @@ Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damoc
 - Edit the file `MPCJF.ps1` and replace the path ***in the last line*** with ***your own*** MPC.exe paths
 - E.g. for MPC-BE default path : ``` & "C:\Program Files\MPC-BE\mpc-be64.exe" "`"$path`""/fullscreen ```
 
-### 3. Install ViolentMonkey and my scripts
+### 3. Install ViolentMonkey
 - In your web browser, install ViolentMonkey extension :
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
+###### Alternatively you can use TamperMonkey or any userscript extension
+###### MPCJF.js can be put in Jellyfin JavaScript Injector plugin instead, but every play buttons in Jellyfin Web won't work anywhere else without MPC-JF.
 
 ### 4. Install MPCJF.js userscript
 - Install the .js userscript, link : [MPCJF.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.js)
@@ -28,8 +30,6 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
   ```
 #### Don't forget the * at the end.
 ###### To find the installed `MPCJF.js` Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** > ***`</>`***
-###### Alternatively you can use TamperMonkey or any userscript extension
-###### MPCJF.js can be put in Jellyfin JavaScript Injector plugin instead, but every play buttons in Jellyfin Web won't work anywhere else without MPC-JF.
 
 ### 5. Enable PowerShell Scripts Execution to allow MPCJF.ps1
 - In Windows 11, go to, Settings → Developers → PowerShell → Allow unsigned scripts
