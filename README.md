@@ -2,7 +2,6 @@
 ### ▸ MPC-BE & MPC-HC & Potplayer Support, may support other media players .exe by following step #2
 ### ▸ Tested with Jellyfin 10.11+, local or NAS JF server, Windows 11, Jellyfin Web UI on Firefox-based or Chrome-based browsers
 ## Installation Steps
-
 ### 0. Download MPC-JF.zip
 Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
 
@@ -80,15 +79,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ---
 
-#### Files in C:\ProgramData\MPC-JF
-- ``` MPCJF.ps1 ``` : Do not delete. Main Script.
-- ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script don't run anymore, maybe after some MPC updates.
-- ``` Install-MPCJF-HiddenProtocol.ps1 ``` : One time run to hide the Powershell window at MPC launch. You may need to run it again if the script don't run hidden anymore
-- ``` MPCJF.js ``` : backup file of the main browser script, it's also in ViolentMonkey in your browser. Use this one if an auto-update of the script have broken things for you.
-
----
-
-#### Troubleshooting :
+### Troubleshooting :
 - Sometimes if it stop working, because of idk, **MPC updates** or some specific settings change, just **re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`).
 - If MPC takes time to launch the media, it's because HDDs are in standby, the script is waiting for your HDD to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
 [jellyfin-nas-hdd-spinup](https://github.com/Damocles-fr/jellyfin-nas-hdd-spinup)
@@ -103,7 +94,15 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ---
 
-#### Need Help?
+### Files in C:\ProgramData\MPC-JF
+- ``` MPCJF.ps1 ``` : Do not delete. Main Script.
+- ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script don't run anymore, maybe after some MPC updates.
+- ``` Install-MPCJF-HiddenProtocol.ps1 ``` : One time run to hide the Powershell window at MPC launch. You may need to run it again if the script don't run hidden anymore
+- ``` MPCJF.js ``` : backup file of the main browser script, it's also in ViolentMonkey in your browser. Use this one if an auto-update of the script have broken things for you.
+
+---
+
+### Need Help?
 - Don't hesitate to open an [issue](https://github.com/Damocles-fr/MPC-JF/issues)
-- **DM me** https://forum.jellyfin.org/u-damocles
-- GitHub https://github.com/Damocles-fr/
+- **DM me**: https://forum.jellyfin.org/u-damocles
+- GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
