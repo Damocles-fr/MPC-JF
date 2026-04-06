@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\MPCJF]
+@="URL:MPC-JF protocol"
+"URL Protocol"=""
+[HKEY_CLASSES_ROOT\MPCJF\shell]
+[HKEY_CLASSES_ROOT\MPCJF\shell\open]
+[HKEY_CLASSES_ROOT\MPCJF\shell\open\command]
+@="powershell -File C:\\ProgramData\\MPC-JF\\MPCJF.ps1 %1"
