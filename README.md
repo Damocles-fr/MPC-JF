@@ -118,7 +118,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script don't run anymore, maybe after some MPC updates.
 - ``` Install-MPCJF-HiddenProtocol.ps1 ``` : One time run to hide the Powershell window at MPC launch. You may need to run it again if the script don't run hidden anymore
 - ``` MPCJF.user.js ``` : backup file of the main browser script, it's also in ViolentMonkey in your browser. Use this one if an auto-update of the script have broken things for your version.
-- ``` MPC-JF-JSinjector-deviceID.js ``` : Jellyfin Media Player (Desktop) JS Injector script.
+- ``` MPC-JF-JSinjector-deviceID.js ``` : Jellyfin Media Player (Desktop App) JS Injector script.
 
 ---
 
