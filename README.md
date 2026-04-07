@@ -70,8 +70,9 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - Run the file `Install-MPCJF-HiddenProtocol.ps1` (Right click and ***Run with PowerShell***)
 
 ### Optional : Adjust Full-Screen Settings
+- Fullscreen is *On* by default
 - Edit "MPCJF.ps1" located in ``` C:\ProgramData\MPC-JF ```
-- At the end of the script, remove or re-add ```/fullscreen```
+- At the end of the script, remove or re-add ```/fullscreen``` e.g. ```"`"$path`""/fullscreen``` (not supported by all media players)
 
 ### 7. Done !
 - Restart your web browser and/or refresh Jellyfin Web UI, test if it works already. If not, see Workaround below.
