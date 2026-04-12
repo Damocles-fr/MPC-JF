@@ -108,13 +108,23 @@
   const looksLikePlayControl = (el) => {
     if (!el || !el.getAttribute) return false;
 
-    const dataMode = normalizeText(getAttr(el, 'data-mode'));
-    const dataAction = normalizeText(getAttr(el, 'data-action'));
-    const dataCommand = normalizeText(getAttr(el, 'data-command'));
     const aria = normalizeText(getAttr(el, 'aria-label'));
     const title = normalizeText(getAttr(el, 'title'));
     const cls = String(el.className || '');
     const txt = normalizeText(el.textContent);
+
+    // --- NEW: Blacklist Section ---
+    // If the button mentions "mark" or "check", it's a status toggle, not a play command.
+    const isMarkControl = aria.includes('mark') || title.includes('mark') ||
+                         aria.includes('check') || title.includes('check') ||
+                         classHasToken(cls, 'played');
+
+    if (isMarkControl) return false;
+    // ------------------------------
+
+    const dataMode = normalizeText(getAttr(el, 'data-mode'));
+    const dataAction = normalizeText(getAttr(el, 'data-action'));
+    const dataCommand = normalizeText(getAttr(el, 'data-command'));
 
     if (dataMode === 'play' || dataMode === 'resume') return true;
     if (dataAction === 'play' || dataAction === 'resume') return true;
