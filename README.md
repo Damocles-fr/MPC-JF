@@ -9,6 +9,11 @@
 - Support **Jellyfin Media Player** (JMP Desktop Windows App) with a DeviceId through JavaScript Injector
 - **Alternative version script** : add a new yellow Play button to the item pages, external player is only triggered from that icon
 
+#### Requirements & limitations :
+- Your media folders HDDs/NAS/network drives must be mounted with a letter in Windows (D:\ E:\ ...)
+- Watched states are not synced.
+
+## Installation
 ### 0. Download MPC-JF.zip
 Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
 
