@@ -110,7 +110,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - To Resume watching the last media, set your Player settings to resume the last file automatically at openning (and open the player instead of jellyfin to resume).
 - Sometimes if it stop working, because of idk, **MPC updates** or some specific settings change, just **re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`).
 - If you change your server adress : modify the installed **MPCJF** userscript : Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** → MPC-JF ***`</>`***
-- If Jellyfin removed or changed you JMP deviceId : re-do step 4.
+- If Jellyfin removed or changed you JMP deviceId : re-do step 4 `deviceId: ` part.
 - If MPC takes time to launch the media, it's because HDDs are in standby and MPC is waiting for them to respond. I have made a tiny watcher that wake up my NAS HDDs at JF Home screen for faster first play here : 
 [jellyfin-nas-hdd-spinup](https://github.com/Damocles-fr/jellyfin-nas-hdd-spinup)
 - To uninstall `Install-MPCJF-HiddenProtocol.ps1` : run in Powershell :
@@ -119,7 +119,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
      Remove-Item -Recurse -Force (Join-Path $env:LOCALAPPDATA "MPCJF") -ErrorAction SilentlyContinue
      ```
 - If you use the Firefox extension ``` Dark Reader ``` , it breaks Jellyfin pictures loading in browsers, desactivate it only for jellyfin : Go into Dark Reader settings while you have the Jellyfin page open (firefox menu bar), click to  Jellyfin URL.
-- Here is my guide with many **quality-of-life improvements** for using Jellyfin in a Web browser (auto-start-stop server, fullscreen UI, shortcut links to media folders, etc.) : [PPFJ](https://github.com/Damocles-fr/PPJF/)
+- Here is my guide with many **quality-of-life improvements** for using Jellyfin (lots of tips and tricks, auto-start-stop server, fullscreen UI, shortcut links to media folders, etc.) : [PPFJ](https://github.com/Damocles-fr/PPJF/)
 
 ---
 
