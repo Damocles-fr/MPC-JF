@@ -7,7 +7,7 @@ $path = $path -replace "\+", "%2B"
 $path = [System.Web.HttpUtility]::UrlDecode($path)
 # Nettoyer les slashes et backslashes multiples
 $path = $path -replace "///", "\"
-$path = $path -replace "\\\", "\"
+$path = $path -replace "\\", "\"
 $path = $path -replace "\\", "\"
 $path = $path -replace "//", "\"
 # Est-ce un chemin UNC (réseau) ?
