@@ -55,6 +55,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - Copy just that `LongRandomString`
 - Go back to your script in: **Dashboard => JS Injector**
 - Paste/Replace: `PUT_DEVICE_ID_HERE` (into the new script in JS Injector) with your `long random string` device Id.
+- Check **Requires Authentication**
 - Check **Enabled**, then click **Save**.
 
 ###### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
