@@ -4,7 +4,7 @@
 </p>
 
 ### ▶︎ Features :
-- Support **MPC-BE & PotPlayer & MPC-HC** (and more ? Try with your own player **.exe**)
+- Support **MPC-BE, PotPlayer or MPC-HC** (and more ? Try with your own player **.exe**)
 - Support Jellyfin Web through userscript (Firefox or Chrome-based)
 - Support **Jellyfin Media Player** (JMP Desktop Windows App) with a DeviceId through JavaScript Injector
 - **Alternative version script** : add a new yellow Play button to the item pages, external player is only triggered from that icon
