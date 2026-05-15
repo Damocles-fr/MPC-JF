@@ -12,7 +12,6 @@
 #### Requirements & limitations :
 - Your media folders HDDs/NAS/network drives must be mounted with a letter in Windows (D:\ E:\ ...)
 - Watched states are not synced.
-#### ▶︎ **Re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`) after a new Media Player/MPC/Potplayer update 
 
 ## Installation
 
