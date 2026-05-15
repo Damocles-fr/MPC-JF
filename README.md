@@ -20,6 +20,7 @@
 Download **latest for Jellyfin 10.11.+** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
 
 ### 1. Place Required Files
+- Before extracting the archive, right-click the downloaded .zip → Properties → check **Unblock** → Apply. This also unblocks the extracted .ps1 scripts required for execution.
 - Extract and move the MPC-JF folder to :
   ```
   C:\ProgramData\
