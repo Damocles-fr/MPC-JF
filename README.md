@@ -111,6 +111,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 ### TIPS :
 - **Re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`) after a new Media Player/MPC/Potplayer update 
 - You will have to checkmark the media as watched in Jellyfin yourself...
+- MPC-HC is not the best anymore to use with MadVR, try Potplayer, it's highly customizable and support nearly all renderer including madVR and D3D11 with RTX video.
 - To Resume watching the last media, set your Player settings to resume the last file automatically at openning → Potplayer's preferences → General → Startup → Check `Play the last played item` (and open the player instead of jellyfin to resume).
 - If you change your server adress : modify the installed **MPCJF** userscript : Browser settings → Extensions → **Violentmonkey** → Options → Go to **Installed Scripts** → MPC-JF ***`</>`***
 - If Jellyfin removed or changed you JMP deviceId : re-do step 4 `deviceId: ` part.
