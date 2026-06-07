@@ -60,6 +60,8 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ###### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
 
+#### • Alternative : Add a new yellow Play button to the item pages that will show everywhere, external player is only triggered from that icon  : Go to Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it MPCJFbutton or whatever, then copy/paste the entire : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js) Check **Enabled**, then click **Save**.
+
 ### 5. Enable PowerShell Scripts Execution to allow MPCJF.ps1
 - In Windows 11, go to, Settings → Developers → PowerShell → Allow unsigned scripts
 - Or if you can't find it :
