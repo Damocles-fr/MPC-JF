@@ -16,8 +16,8 @@
 > [!WARNING]
 > **The only official repository is https://github.com/Damocles-fr/MPC-JF**
 >
-> A malicious clone (`matthew4218/MPC-JF`) ranks high on Google and pushes a **ZIP containing
-> malware**. Please report the fake repo to GitHub ("Report repository" → malware).
+> A malicious clone ranks high on Google and pushes a **ZIP containing malware**. 
+> Please help by reporting the fake repo at `matthew4218/MPC-JF` : "Report repository" (In the middle of the right sidebar) → malware.
 
 ## Installation
 
