@@ -13,6 +13,13 @@
 - Your media folders HDDs/NAS/network drives must be mounted with a letter in Windows (D:\ E:\ ...)
 - Watched states are not synced.
 
+> [!WARNING]
+> **The only official repository is https://github.com/Damocles-fr/MPC-JF**
+>
+> A malicious clone (`matthew4218/MPC-JF`) ranks high on Google and pushes a **ZIP containing
+> malware**. This project does NOT distribute any ZIP through third-party links.
+> Please report the fake repo to GitHub ("Report repository" → malware).
+
 ## Installation
 
 ### 0. Download MPC-JF.zip
