@@ -5,6 +5,7 @@
 
 ### ▶︎ Features :
 - Support **MPC-BE, PotPlayer or MPC-HC** (and more ? Try with your own player **.exe**)
+- The easiest way to use madVR with Jellyfin
 - Support Jellyfin Web through userscript (Firefox or Chrome-based)
 - Support **Jellyfin Media Player** (JMP Desktop Windows App) with a DeviceId through JavaScript Injector
 - **Alternative version script** : add a new yellow Play button to the item pages, external player is only triggered from that icon
