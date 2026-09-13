@@ -56,7 +56,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - Go to: Jellyfin → **Admin Dashboard → JS Injector → Add Script**
 - Name it MPCJF or whatever, then copy/paste the entire `MPC-JF-JSinjector-deviceID.js` script.
 - On the PC, go to your corresponding `C:\Users\YourUserName\AppData\Local\JellyfinMediaPlayer\logs\`
-- Or for Jellyfin Desktop : `C:\Users\Romain\AppData\Local\jellyfin-desktop\Logs` for 
+- Or for Jellyfin Desktop : `C:\Users\Romain\AppData\Local\jellyfin-desktop\Logs` 
 - Open `JellyfinMediaPlayer.log` or `jellyfin-desktop.log` with Notepad.
 - Press `Ctrl + F` and search for: `deviceId` (preferably at the bottom)
 - You should find a line containing `deviceId:` or `deviceId=` `LongRandomString`
