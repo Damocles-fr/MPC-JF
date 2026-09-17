@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MPC-JF - MPC launcher for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPCJF/
-// @version      10.11
+// @version      12.1.0
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJF.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJF.js
 // @description  Intercept Play/Resume clicks in Jellyfin to launch medias with the MPCJF.ps1 script
@@ -19,6 +19,9 @@
 
   // mémorise le choix "version" par itemId (utile quand Jellyfin recycle le DOM)
   const lastSelectedByItem = new Map();
+
+  // true pendant qu'on rejoue un clic vers Jellyfin (exception playlist) : nos écouteurs l'ignorent
+  let bypassNative = false;
 
   let _userIdPromise = null;
   const getUserId = async () => {
@@ -105,6 +108,127 @@
   const classHasToken = (cls, token) => new RegExp(`(^|[\\s_-])${token}([\\s_-]|$)`, 'i')
     .test(String(cls || ''));
 
+  // ---- Exceptions : playlists + titres de médias contenant "Play" ----
+
+  // lettres/chiffres (accents inclus) : sert à détecter des mots entiers
+  const WORD_CHARS = 'a-z0-9\\u00c0-\\u024f';
+  const PLAY_WORD_RE = new RegExp(`(^|[^${WORD_CHARS}])(play|lire|reprendre|resume)(?=$|[^${WORD_CHARS}])`, 'i');
+  const TOKEN_SPLIT_RE = new RegExp(`[^${WORD_CHARS}:.]+`);
+
+  // "playlist", "playlists", "play list", "playlist_add", "addtoplaylist", "liste(s) de lecture"...
+  const PLAYLIST_RE = /playlist|(^|[^a-z])play[\s_-]lists?|listes?[\s_-]+de[\s_-]+lecture/i;
+  const mentionsPlaylist = (s) => !!s && PLAYLIST_RE.test(String(s).replace(/display/gi, ' '));
+
+  // mots autorisés dans un libellé de commande de lecture (en / fr)
+  const COMMAND_WORDS = new Set([
+    'play', 'lire', 'reprendre', 'resume', 'playback', 'lecture',
+    'all', 'tout', 'tous', 'toutes', 'from', 'here', 'the', 'this', 'beginning', 'start', 'now', 'next',
+    'depuis', 'le', 'la', 'les', 'l', 'à', 'a', 'au', 'partir', 'de', 'd', 'du', 'ici', 'début', 'debut',
+    'maintenant', 'ensuite', 'ce', 'cet', 'cette', 'with', 'avec', 'in', 'dans', 'at', 'position',
+    'item', 'élément', 'element', 'media', 'média', 'movie', 'film', 'video', 'vidéo', 'episode', 'épisode',
+    'button', 'bouton', 'mpc', 'hc', 'be', 'jf', 'mpcjf'
+  ]);
+
+  const isCommandToken = (t) =>
+    COMMAND_WORDS.has(t) || /^\d[\d:.hms]*$/.test(t) || /^s\d+e\d+$/.test(t);
+
+  // Un aria-label / title n'est une commande de lecture que s'il ne contient QUE des mots de commande :
+  // "Play", "Resume", "Lire", "Reprendre à 12:34", "Tout lire à partir d'ici"... -> oui
+  // "Foul Play", "Play Misty for Me", "Ready Player One", "Add to playlist", "Display"... -> non
+  const isPlayCommandLabel = (label) => {
+    const s = normalizeText(label);
+    if (!s || !PLAY_WORD_RE.test(s) || mentionsPlaylist(s)) return false;
+
+    const tokens = s
+      .replace(/[\u2019'`]/g, ' ')
+      .split(TOKEN_SPLIT_RE)
+      .map(t => t.replace(/^[:.]+|[:.]+$/g, ''))
+      .filter(Boolean);
+
+    return tokens.length > 0 && tokens.every(isCommandToken);
+  };
+
+  // vrai lien de navigation (carte, titre cliquable...) -> jamais une commande de lecture via son libellé
+  const isNavigationLink = (el) => {
+    const href = normalizeText(getAttr(el, 'href'));
+    return !!href && href !== '#' && !href.startsWith('javascript:');
+  };
+
+  // full = true : contrôle cliqué + ce qu'il contient ; false : ancêtres (marqueurs "forts" uniquement)
+  const nodeHasPlaylistMarker = (el, full) => {
+    if (!el || !el.getAttribute) return false;
+
+    const type = normalizeText(getAttr(el, 'data-type'));
+    const ctype = normalizeText(getAttr(el, 'data-collectiontype'));
+    if (type === 'playlist' || type.includes('playlistsfolder') || ctype === 'playlists') return true;
+
+    if (mentionsPlaylist(getAttr(el, 'class')) || mentionsPlaylist(getAttr(el, 'data-action'))) return true;
+
+    if (!full) return false;
+
+    const attrs = ['aria-label', 'title', 'data-id', 'data-testid', 'data-mode', 'data-command', 'href'];
+    if (attrs.some(a => mentionsPlaylist(getAttr(el, a)))) return true;
+
+    const tag = String(el.tagName || '').toLowerCase();
+    const isInteractive = tag === 'button' || tag === 'a' || normalizeText(getAttr(el, 'role')) === 'button';
+    if (!isInteractive) return false;
+
+    const txt = String(el.textContent || '');
+    return txt.length <= 80 && mentionsPlaylist(txt);
+  };
+
+  const nodeHasAudioMarker = (el) => {
+    if (!el || !el.getAttribute) return false;
+    const mediaType = normalizeText(getAttr(el, 'data-mediatype'));
+    const type = normalizeText(getAttr(el, 'data-type'));
+    const ctype = normalizeText(getAttr(el, 'data-collectiontype'));
+    return mediaType === 'audio' || AUDIO_TYPES.includes(type) || AUDIO_COLLECTIONS.includes(ctype);
+  };
+
+  // Parcourt le chemin du clic : tout ce qui est sous le contrôle + le contrôle (contrôle complet),
+  // puis les ancêtres jusqu'au premier élément portant un itemId (la carte / ligne du média).
+  // Playlist ou audio -> on laisse Jellyfin gérer.
+  const isExcludedContext = (path, control) => {
+    let passedControl = false;
+    for (const node of path) {
+      if (!node || !node.getAttribute) continue;
+      if (nodeHasPlaylistMarker(node, !passedControl) || nodeHasAudioMarker(node)) return true;
+      if (node === control) passedControl = true;
+      if (passedControl && getIdFromEl(node)) break;
+    }
+    return false;
+  };
+
+  const isPlaylistItem = (item) => {
+    const type = normalizeText(item && item.Type);
+    const ctype = normalizeText(item && item.CollectionType);
+    return type === 'playlist' || type.includes('playlistsfolder') || ctype === 'playlists';
+  };
+
+  // exclusion audio : musique, livres audio... restent dans le lecteur Jellyfin
+  const AUDIO_TYPES = ['audio', 'musicalbum', 'musicartist', 'musicgenre', 'audiobook'];
+  const AUDIO_COLLECTIONS = ['music', 'audiobooks'];
+
+  const isAudioItem = (item) => {
+    const mediaType = normalizeText(item?.MediaType);
+    const type = normalizeText(item?.Type);
+    const ctype = normalizeText(item?.CollectionType);
+    return mediaType === 'audio' || AUDIO_TYPES.includes(type) || AUDIO_COLLECTIONS.includes(ctype);
+  };
+
+  const isExcludedItem = (item) => isPlaylistItem(item) || isAudioItem(item);
+
+  const SKIP_NATIVE = { skipNative: true };
+
+  // rend la main à Jellyfin (lecture / ouverture native) sans que nos écouteurs n'interceptent
+  const replayNatively = (control) => {
+    if (!control || !control.isConnected || typeof control.click !== 'function') return;
+    bypassNative = true;
+    try { control.click(); } finally { bypassNative = false; }
+  };
+
+  // ------------------------------------------------------------------
+
   const looksLikePlayControl = (el) => {
     if (!el || !el.getAttribute) return false;
 
@@ -126,14 +250,21 @@
     const dataAction = normalizeText(getAttr(el, 'data-action'));
     const dataCommand = normalizeText(getAttr(el, 'data-command'));
 
+    // exception playlist (addtoplaylist, setplaylistindex, ...)
+    if (mentionsPlaylist(dataMode) || mentionsPlaylist(dataAction) || mentionsPlaylist(dataCommand)) return false;
+
     if (dataMode === 'play' || dataMode === 'resume') return true;
     if (dataAction === 'play' || dataAction === 'resume') return true;
     if (dataCommand.includes('play') || dataCommand.includes('resume')) return true;
 
-    if (aria.includes('play') || aria.includes('lire') || aria.includes('reprendre') || aria.includes('resume')) return true;
-    if (title.includes('play') || title.includes('lire') || title.includes('reprendre') || title.includes('resume')) return true;
+    // Cartes / titres cliquables : data-action="link", "menu", "none"... ou vrai href.
+    // Leur aria-label / title / texte contient le NOM du média (ex. "Ready Player One") -> ignorés.
+    const isLinkLike = isNavigationLink(el) || (!!dataAction && !/^(play|resume)/.test(dataAction));
 
-    if (txt === 'play_arrow' || txt === 'play_circle' || txt === 'resume' || txt === 'replay') return true;
+    if (!isLinkLike) {
+      if (isPlayCommandLabel(aria) || isPlayCommandLabel(title)) return true;
+      if (txt === 'play_arrow' || txt === 'play_circle' || txt === 'resume' || txt === 'replay') return true;
+    }
 
     if (classHasToken(cls, 'play') || classHasToken(cls, 'resume')) return true;
 
@@ -157,6 +288,58 @@
     }
     return null;
   };
+
+  // ---- Vue liste (playlist...) : ligne entière cliquable avec data-action="playallfromhere" ----
+  const VIDEO_TYPES = ['movie', 'episode', 'video', 'musicvideo', 'trailer'];
+
+  const isDragHandle = (node) =>
+    !!(node && node.getAttribute && classHasToken(getAttr(node, 'class'), 'listViewDragHandle'));
+
+  // Même logique que Jellyfin : 1er ancêtre ".itemAction", puis son data-action
+  // ou celui du premier ancêtre qui en possède un.
+  const findPlayAllFromHereControl = (path) => {
+    let card = null;
+    let cardIndex = -1;
+    let action = '';
+
+    for (let i = 0; i < path.length; i++) {
+      const node = path[i];
+      if (!node || !node.getAttribute) continue;
+
+      if (!card) {
+        if (isDragHandle(node)) return null;
+        if (!classHasToken(getAttr(node, 'class'), 'itemAction')) continue;
+        card = node;
+        cardIndex = i;
+      }
+
+      const a = getAttr(node, 'data-action');
+      if (a) { action = normalizeText(a); break; }
+    }
+
+    if (!card || action !== 'playallfromhere') return null;
+
+    // élément du média (ligne) : uniquement la vidéo, l'audio reste géré par Jellyfin
+    let itemEl = null;
+    for (let i = cardIndex; i < path.length; i++) {
+      if (getIdFromEl(path[i])) { itemEl = path[i]; break; }
+    }
+    if (!itemEl) return null;
+
+    const mediaType = normalizeText(getAttr(itemEl, 'data-mediatype'));
+    const type = normalizeText(getAttr(itemEl, 'data-type'));
+    const isVideo = mediaType ? mediaType === 'video' : VIDEO_TYPES.includes(type);
+
+    return isVideo ? card : null;
+  };
+
+  const findControl = (path) => findPlayControlInPath(path) || findPlayAllFromHereControl(path);
+
+  // un appui commencé sur la poignée de réorganisation n'est jamais une lecture
+  let pointerDownOnDragHandle = false;
+  document.addEventListener('pointerdown', (e) => {
+    pointerDownOnDragHandle = eventPath(e).some(isDragHandle);
+  }, true);
 
   const findItemIdInPath = (path) => {
     for (const node of path) {
@@ -258,6 +441,9 @@
     const userId = await getUserId();
     const item = await ApiClient.getItem(userId, itemId);
 
+    // exceptions playlist + audio : on laisse Jellyfin gérer
+    if (depth === 0 && isExcludedItem(item)) return SKIP_NATIVE;
+
     const ms = item && item.MediaSources;
 
     // priorité à la MediaSource sélectionnée
@@ -292,12 +478,19 @@
   };
 
   let _lastLaunchAt = 0;
-  const launchMPCJF = async (itemId, mediaSourceId = null) => {
+  const launchMPCJF = async (itemId, mediaSourceId = null, control = null) => {
     const now = Date.now();
     if (now - _lastLaunchAt < 600) return;
     _lastLaunchAt = now;
 
     const p = await resolvePathFromItem(itemId, mediaSourceId);
+
+    if (p === SKIP_NATIVE) {
+      log('playlist/audio -> native Jellyfin', { itemId });
+      replayNatively(control);
+      return;
+    }
+
     if (!p) {
       console.warn('[MPCJF] Unable to resolve a local Path for itemId:', itemId, 'mediaSourceId:', mediaSourceId);
       return;
@@ -316,11 +509,18 @@
   };
 
   const onUserActivate = (e) => {
+    if (bypassNative) return;
     if (shouldIgnore(e)) return;
+    if (pointerDownOnDragHandle) return;
 
     const path = eventPath(e);
-    const control = findPlayControlInPath(path);
+    const control = findControl(path);
     if (!control) return;
+
+    if (isExcludedContext(path, control)) {
+      log('playlist/audio context -> ignored', control);
+      return;
+    }
 
     const itemId = findItemIdInPath(path);
     if (!itemId) return;
@@ -328,19 +528,26 @@
     const mediaSourceId = getSelectedMediaSourceId(path, itemId);
 
     stopEvent(e);
-    launchMPCJF(itemId, mediaSourceId);
+    launchMPCJF(itemId, mediaSourceId, control);
   };
 
   document.addEventListener('click', onUserActivate, true);
   document.addEventListener('pointerup', onUserActivate, true);
 
   document.addEventListener('keydown', (e) => {
+    if (bypassNative) return;
+
     const key = e && e.key;
     if (key !== 'Enter' && key !== ' ') return;
 
     const path = eventPath(e);
-    const control = findPlayControlInPath(path);
+    const control = findControl(path);
     if (!control) return;
+
+    if (isExcludedContext(path, control)) {
+      log('playlist/audio context -> ignored', control);
+      return;
+    }
 
     const itemId = findItemIdInPath(path);
     if (!itemId) return;
@@ -348,7 +555,7 @@
     const mediaSourceId = getSelectedMediaSourceId(path, itemId);
 
     stopEvent(e);
-    launchMPCJF(itemId, mediaSourceId);
+    launchMPCJF(itemId, mediaSourceId, control);
   }, true);
 
   log('loaded');

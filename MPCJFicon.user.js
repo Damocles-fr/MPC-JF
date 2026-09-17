@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MPC-JF - MPC icon launcher for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPCJF/
-// @version      10.11.1
+// @version      12.1.0
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJFicon.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJFicon.user.js
 // @description  Add a dedicated MPC-JF launcher button on Jellyfin media detail pages. Native Play buttons stay untouched.
@@ -22,6 +22,10 @@
   let userIdPromise = null;
   let lastLaunchAt = 0;
   let syncQueued = false;
+
+  // exceptions playlist + audio : itemId -> true (exclu) | false | 'pending'
+  const playlistState = new Map();
+  const SKIP_PLAYLIST = { skipPlaylist: true };
 
   const isGuidLike = (s) =>
     typeof s === 'string' && /^[0-9a-f]{8,}(-[0-9a-f]{4,}){0,4}$/i.test(s);
@@ -45,6 +49,45 @@
     return m && isGuidLike(m[1]) ? m[1] : null;
   };
 
+  // "#/details?id=" (JF récents) + "#!/details?id=" / "#!/itemdetails.html?id=" (anciennes versions)
+  const isDetailsHash = () => {
+    const h = String(location.hash || '');
+    return h.includes('#/details') || /^#!?\/(details|itemdetails\.html)(\?|$)/i.test(h);
+  };
+
+  const isPlaylistItem = (item) => {
+    const type = String(item?.Type || '').toLowerCase();
+    const ctype = String(item?.CollectionType || '').toLowerCase();
+    return type === 'playlist' || type.includes('playlistsfolder') || ctype === 'playlists';
+  };
+
+  // exclusion audio : musique, livres audio... restent dans le lecteur Jellyfin
+  const AUDIO_TYPES = ['audio', 'musicalbum', 'musicartist', 'musicgenre', 'audiobook'];
+  const AUDIO_COLLECTIONS = ['music', 'audiobooks'];
+
+  const isAudioItem = (item) => {
+    const mediaType = String(item?.MediaType || '').toLowerCase();
+    const type = String(item?.Type || '').toLowerCase();
+    const ctype = String(item?.CollectionType || '').toLowerCase();
+    return mediaType === 'audio' || AUDIO_TYPES.includes(type) || AUDIO_COLLECTIONS.includes(ctype);
+  };
+
+  const isExcludedItem = (item) => isPlaylistItem(item) || isAudioItem(item);
+
+  // renvoie true / false / 'pending' ; en cas d'erreur API on garde le comportement d'origine (false)
+  const checkPlaylist = (itemId) => {
+    if (playlistState.has(itemId)) return playlistState.get(itemId);
+    playlistState.set(itemId, 'pending');
+
+    getUserId()
+      .then((userId) => ApiClient.getItem(userId, itemId))
+      .then((item) => playlistState.set(itemId, isExcludedItem(item)))
+      .catch(() => playlistState.set(itemId, false))
+      .then(() => scheduleSync());
+
+    return 'pending';
+  };
+
   const toMPCJFUrl = (rawPath) => {
     const forward = String(rawPath).replace(/\\/g, '/');
     const encoded = encodeURIComponent(forward).replace(/%2F/g, '/');
@@ -63,6 +106,13 @@
 
     const userId = await getUserId();
     const item = await ApiClient.getItem(userId, itemId);
+
+    // exceptions playlist + audio : jamais lancés dans MPC
+    if (depth === 0 && isExcludedItem(item)) {
+      playlistState.set(itemId, true);
+      return SKIP_PLAYLIST;
+    }
+
     const mediaSources = item?.MediaSources || [];
 
     if (mediaSourceId && mediaSources.length) {
@@ -96,9 +146,14 @@
 
     const itemId = getItemIdFromHash();
     if (!itemId) return;
+    if (playlistState.get(itemId) === true) return;
 
     const mediaSourceId = getSelectedMediaSourceId(itemId);
     const path = await resolvePathFromItem(itemId, mediaSourceId);
+    if (path === SKIP_PLAYLIST) {
+      removeStaleButtons();
+      return;
+    }
     if (!path) {
       console.warn('[MPCJF] Unable to resolve a local path for itemId:', itemId, 'mediaSourceId:', mediaSourceId);
       return;
@@ -205,7 +260,14 @@
     syncQueued = false;
 
     const itemId = getItemIdFromHash();
-    if (!itemId || !String(location.hash || '').includes('#/details')) {
+    if (!itemId || !isDetailsHash()) {
+      removeStaleButtons();
+      return;
+    }
+
+    // exceptions : pas de bouton MPC-JF sur une playlist (ni le dossier Playlists) ni sur l'audio
+    const playlist = checkPlaylist(itemId);
+    if (playlist !== false) {
       removeStaleButtons();
       return;
     }
