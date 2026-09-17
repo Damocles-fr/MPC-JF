@@ -1,6 +1,6 @@
 # MPC-JF ▸ External player launcher for Jellyfin (Windows)
 <p align="center">
-  <img src="./MPCJF.webp" alt="Android view" width="128"><br>
+  <img src="./MPCJF.webp" alt="MPC-JF logo" width="128"><br>
 </p>
 
 ### ▶︎ Features :
