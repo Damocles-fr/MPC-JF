@@ -90,7 +90,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
      ```
 ### 6. Apply MPC-JF Registry Settings
 - Run `MPCJF.reg` and confirm changes.
-- You may need to re-run `MPCJF.reg` after major Media Player Updates.
+- You may need to re-run `MPCJF.reg` after major updates.
 
 ### Optional :  Hide the PowerShell window at MPC-JF launch
 - `Install-MPCJF-HiddenProtocol.ps1` must be in your default MPC-JF folder.
@@ -125,7 +125,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 ---
 
 ### TIPS :
-- **Re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`) after a new Media Player/MPC/Potplayer update 
+- **Re-run** `MPCJF.reg` (& `Install-MPCJF-HiddenProtocol.ps1`) after a breaking update 
 - You will have to checkmark the media as watched in Jellyfin yourself...
 - MPC-HC is not the best anymore to use with MadVR, try Potplayer, it's highly customizable and support nearly all renderer including madVR and D3D11 with RTX video.
 - To Resume watching the last media, set your Player settings to resume the last file automatically at opening → Potplayer's preferences → General → Startup → Check `Play the last played item` (and open the player instead of jellyfin to resume).
@@ -144,7 +144,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ### Files in C:\ProgramData\MPC-JF
 - ``` MPCJF.ps1 ``` : Do not delete. Main Script.
-- ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script doesn't run anymore, maybe after some PotPlayer/MPC updates.
+- ``` MPCJF.reg ``` : Do not delete. You may need to run it again if the script doesn't run anymore, maybe after some updates.
 - ``` Install-MPCJF-HiddenProtocol.ps1 ``` : One time run to hide the Powershell window at Player launch. You may need to run it again after some PotPlayer/MPC updates.
 - ``` MPCJF.user.js ``` : Main browser script, it's in ViolentMonkey in your browser. Use this one if an auto-update of the script has broken things for your version.
 - ``` MPC-JF-JSinjector-deviceID.js ``` : Jellyfin Media Player / Jellyfin Desktop (Windows app) JS Injector script.
