@@ -4,7 +4,7 @@
 </p>
 
 ### ▶︎ Features :
-- Support **MPC-BE, PotPlayer or MPC-HC** (and more ? Try with your own player **.exe**)
+- Support **MPC-BE, PotPlayer, VLC or MPC-HC** (and more ? Try with your own player **.exe**)
 - The easiest way to use madVR with Jellyfin
 - Support Jellyfin Web through userscript (Firefox or Chrome-based)
 - Support **Jellyfin Media Player / Jellyfin Desktop** (Windows app) with a DeviceId through JavaScript Injector
@@ -37,6 +37,7 @@ Download **latest for Jellyfin 12+ or 10.11.x** : [MPC-JF.zip](https://github.co
 ### 2. If you don't use ***MPC-BE*** and its default path :
 - Edit the file `MPCJF.ps1` and replace the path ***in the last line*** with ***your own*** corresponding path. (MPC-HC or any other player path)
 - E.g. for PotPlayer default path : ``` & "C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe" "`"$path`"" ```
+- E.g. for VLC default path : ``` & "C:\Program Files\VideoLAN\VLC\vlc.exe" "`"$path`"" ```
 
 ### 3. (Recommended) : Installation for Web Browser 
 - In your web browser, install ViolentMonkey extension :
