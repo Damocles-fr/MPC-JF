@@ -2,8 +2,8 @@
 // @name         MPC-JF - MPC launcher for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPCJF/
 // @version      12.1.0
-// @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJF.js
-// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJF.js
+// @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
+// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
 // @description  Intercept Play/Resume clicks in Jellyfin to launch medias with the MPCJF.ps1 script
 // @author       Damocles-fr
 // @match        http://localhost:8096/*
@@ -151,7 +151,7 @@
   // vrai lien de navigation (carte, titre cliquable...) -> jamais une commande de lecture via son libellé
   const isNavigationLink = (el) => {
     const href = normalizeText(getAttr(el, 'href'));
-    return !!href && href !== '#' && !href.startsWith('javascript:');
+    return !!href && href !== '#' && !/^javascript:/.test(href);
   };
 
   // full = true : contrôle cliqué + ce qu'il contient ; false : ancêtres (marqueurs "forts" uniquement)

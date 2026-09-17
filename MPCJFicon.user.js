@@ -2,8 +2,8 @@
 // @name         MPC-JF - MPC icon launcher for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPCJF/
 // @version      12.1.0
-// @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJFicon.user.js
-// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPCJF/refs/heads/main/MPCJFicon.user.js
+// @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js
+// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js
 // @description  Add a dedicated MPC-JF launcher button on Jellyfin media detail pages. Native Play buttons stay untouched.
 // @author       Damocles-fr
 // @match        http://localhost:8096/*
