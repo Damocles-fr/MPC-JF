@@ -24,7 +24,7 @@
 ## Installation
 
 ### 0. Download MPC-JF.zip
-Download **latest for Jellyfin 12+ or 10.11.x** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
+Download **latest (compatible Jellyfin 12+ & 10.11.x** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
 
 ### 1. Place Required Files
 - Before extracting the archive, right-click the downloaded .zip → Properties → check **Unblock** → Apply. This also unblocks the extracted .ps1 scripts required for execution.
