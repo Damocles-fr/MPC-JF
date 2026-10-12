@@ -47,7 +47,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 	### Or
 
-	Install ***MPCJFicon.user.js*** alternative : **add a new yellow Play button to the item pages**, external player is only triggered from that icon), one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js)
+	Install ***MPCJFicon.user.js*** alternative : **add a new yellow Play button to the item pages**, external player is only triggered from that icon, one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js)
 <p align="center">
   <img src="./MPCJFicon.webp" alt="MPCJFicon" width="500"><br>
 </p>
