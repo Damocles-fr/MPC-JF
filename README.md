@@ -23,10 +23,10 @@
 
 ## Installation
 
-### 0. Download MPC-JF.zip
+### 1. Download MPC-JF.zip
 Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
 
-### 1. Place Required Files
+### 2. Place Required Files
 - Before extracting the archive, right-click the downloaded .zip → Properties → check **Unblock** → Apply. This also unblocks the extracted .ps1 scripts required for execution.
 - Extract and move the MPC-JF folder to :
   ```
@@ -34,12 +34,12 @@ Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://g
   ```
 - You should end up with: `C:\ProgramData\MPC-JF\` (with all files inside).
 
-### 2. If you don't use ***MPC-BE*** and its default path :
+### 3. If you don't use ***MPC-BE*** and its default path :
 - Edit the file `MPCJF.ps1` and replace the path ***in the last line*** with ***your own*** corresponding path. (MPC-HC or any other player path)
 - E.g. for PotPlayer default path : ``` & "C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe" "`"$path`"" ```
 - E.g. for VLC default path : ``` & "C:\Program Files\VideoLAN\VLC\vlc.exe" "`"$path`"" ```
 
-### 3. (Recommended) : Installation for Web Browser 
+### 4. (Recommended) : Installation for Web Browser 
 - In your web browser, install ViolentMonkey extension :
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	###### Alternatively you can use TamperMonkey or any userscript extension
