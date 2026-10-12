@@ -73,8 +73,8 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - Open it with Notepad, `Ctrl + F` → `deviceId` (preferably the last one), and copy the long random string after `deviceId:` or `deviceId=`.
 - If it doesn't work, close and reopen/reconnect the app, then search again at the bottom of the log.
 
-###### Notes : Jellyfin Desktop doesn't import Jellyfin Media Player settings : switching app means a new DeviceId, so redo this step.
 ###### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
+###### Notes : The new unofficial Jellium Desktop client doesn't seem to support launching external scripts.
 ###### Alternative : Add a new yellow Play button to the item pages that will show everywhere, external player is only triggered from that icon  : Go to Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it MPCJFbutton or whatever, then copy/paste the entire : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js) Check **Enabled**, then click **Save**.
 
 ### 7. Enable PowerShell Scripts Execution to allow MPCJF.ps1
