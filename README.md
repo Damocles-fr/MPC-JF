@@ -43,21 +43,22 @@ Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://g
 - In your web browser, install ViolentMonkey extension :
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	###### Alternatively you can use TamperMonkey or any userscript extension
-- Install MPCJF.user.js (replace all playing functions), one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
+- Install ***MPCJF.user.js*** : **replace all playing functions**, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
 
-	or
+	### Or
 
-	Alternative : MPCJFicon.user.js (add a new yellow Play button to the item pages, external player is only triggered from that icon), one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js)
-- If your Jellyfin server is not at the default address ``` http://localhost:8096/ ```, add your own address **without editing the script**, so auto-updates keep working :
-	- **Violentmonkey** : Dashboard → click **`</>`** on MPC-JF → **Settings** ***tab*** → add your address in the **@match** rules
-	- **Tampermonkey** : Dashboard → MPC-JF → **Settings** tab → **Includes/Excludes** → **User matches** → **Add...**
-	
-  ```
-  http://192.168.1.10:8096/*
-  ```
-	##### - Don't forget the * at the end.
+	Install ***MPCJFicon.user.js*** alternative : **add a new yellow Play button to the item pages**, external player is only triggered from that icon), one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js)
+<p align="center">
+  <img src="./MPCJFicon.webp" alt="MPCJFicon" width="500"><br>
+</p>
 
-### 4. (Optional) : Installation for Jellyfin Media Player / Jellyfin Desktop (Windows app)
+### 5. If your Jellyfin server is not at the default address http://localhost:8096/ , add your own address **without editing the script**, so auto-updates keep working :
+- **Violentmonkey** : Dashboard → click **`</>`** on MPC-JF → **Settings** ***tab*** → add your address in the **@match** rules
+- **Tampermonkey** : Dashboard → MPC-JF → **Settings** tab → **Includes/Excludes** → **User matches** → **Add...**
+- ```http://192.168.x.xx:8096/*``` (replace with your JF address)
+###### 	Don't forget the * at the end.
+
+### 6. (Optional) : Installation for Jellyfin Media Player / Jellyfin Desktop (Windows app)
 - Install the **[JavaScript Injector plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)** on your Jellyfin server if it is not already installed. A server restart may be required.
 - Go to: Jellyfin → **Admin Dashboard → JS Injector → Add Script**
 - Name it MPCJF or whatever, then copy/paste the entire `MPC-JF-JSinjector-deviceID.js` script.
@@ -76,7 +77,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 ###### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
 ###### Alternative : Add a new yellow Play button to the item pages that will show everywhere, external player is only triggered from that icon  : Go to Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it MPCJFbutton or whatever, then copy/paste the entire : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js) Check **Enabled**, then click **Save**.
 
-### 5. Enable PowerShell Scripts Execution to allow MPCJF.ps1
+### 7. Enable PowerShell Scripts Execution to allow MPCJF.ps1
 - In Windows 11, go to, Settings → Developers → PowerShell → Allow unsigned scripts
 - Or if you can't find it :
 	- Search for `PowerShell` in the Start menu, right-click it, and select **Run as Administrator**.
@@ -88,7 +89,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
      ```
      Set-ExecutionPolicy RemoteSigned -Force
      ```
-### 6. Apply MPC-JF Registry Settings
+### 8. Apply MPC-JF Registry Settings
 - Run `MPCJF.reg` and confirm changes.
 - You may need to re-run `MPCJF.reg` after major updates.
 
@@ -103,7 +104,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 - At the end of the script, remove or re-add ```/fullscreen``` e.g. ```"`"$path`""/fullscreen```
 ###### (not supported by all media players, for PotPlayer you can adjust this in Potplayer's preferences → General → Startup → Startup → Window Size)
 
-### 7. Done !
+### 9. Done !
 - Restart your web browser and/or refresh Jellyfin Web UI, test if it works already. If not, see Workaround below.
 
 ---
