@@ -4,7 +4,7 @@
 </p>
 
 ### ▸ Press Play in Jellyfin Web UI, watch in **your own player** on Windows: PotPlayer, MPC-BE, MPC-HC, VLC, mpv, SMPlayer... While keeping your UI plugins, player settings, shaders, madVR....
-### ▸ **This is not a client**
+### ▸ **This is not a client**. Think of it as a tool that gives easy access to your own media player.
 
 
 <p align="center">
