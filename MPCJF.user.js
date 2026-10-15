@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         MPC-JF - MPC launcher for Jellyfin
+// @name         PlayBridge - external player launcher for Jellyfin (formerly MPC-JF)
 // @namespace    https://github.com/Damocles-fr/MPCJF/
-// @version      12.1.0
+// @version      13.0.0
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
-// @description  Intercept Play/Resume clicks in Jellyfin to launch medias with the MPCJF.ps1 script
+// @description  Jellyfin Play/Resume buttons open your own video player through PlayBridge (Windows)
 // @author       Damocles-fr
 // @match        http://localhost:8096/*
 // @run-at       document-end
@@ -14,8 +14,12 @@
 (() => {
   'use strict';
 
+  // ---- PlayBridge settings (PlayBridge Setup writes them in the copy it installs) ----
+  const PROTOCOL = 'MPCJF://';          // link opened by PlayBridge on this PC
+  const STREAM_LINKS = false;          // true: also send the Jellyfin link data (stream, download, path+stream modes)
+
   const CFG = { debug: false };
-  const log = (...a) => { if (CFG.debug) console.log('[MPCJF]', ...a); };
+  const log = (...a) => { if (CFG.debug) console.log('[PlayBridge]', ...a); };
 
   // mémorise le choix "version" par itemId (utile quand Jellyfin recycle le DOM)
   const lastSelectedByItem = new Map();
@@ -29,10 +33,80 @@
     return _userIdPromise;
   };
 
-  const toMPCJFUrl = (rawPath) => {
+  // ---- Stream links (PlayBridge 13+) ----
+  // Off by default: the link then stays exactly as in older versions (older installs keep working).
+  // PlayBridge Setup writes STREAM_LINKS = true in the copy it installs when PlayBridge uses Jellyfin links
+  // (stream, download and path+stream modes).
+  // Manual switch for this browser: in Jellyfin press F12 > Console and type
+  //   localStorage.setItem('playbridge-stream', 'on')      (or 'off')
+  const STREAM_KEY = 'playbridge-stream';
+  const streamLinksOn = () => {
+    if (STREAM_LINKS) return true;
+    try { return localStorage.getItem(STREAM_KEY) === 'on'; } catch { return false; }
+  };
+
+  const showToast = (text) => {
+    const box = document.createElement('div');
+    box.textContent = text;
+    box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2147483647;' +
+      'padding:12px 18px;border-radius:10px;background:rgba(20,20,20,.95);color:#fff;font:15px/1.4 sans-serif;' +
+      'box-shadow:0 8px 30px rgba(0,0,0,.5);border:1px solid #ffaa00';
+    const add = () => { (document.body || document.documentElement).appendChild(box); setTimeout(() => box.remove(), 10000); };
+    if (document.body) add(); else document.addEventListener('DOMContentLoaded', add, { once: true });
+  };
+
+  // "?playbridge-stream=on" opened by PlayBridge Setup (auto-update mode). Jellyfin may rewrite the address
+  // before this script runs, so the address of the page as it was loaded is checked too.
+  (() => {
+    let loaded = '';
+    try { loaded = String((performance.getEntriesByType('navigation')[0] || {}).name || ''); } catch {}
+    const m = /[?&#]playbridge-stream=(on|off)\b/i.exec(String(location.search) + String(location.hash) + ' ' + loaded);
+    if (!m) return;
+    const on = m[1].toLowerCase() === 'on';
+    try { if (on) localStorage.setItem(STREAM_KEY, 'on'); else localStorage.removeItem(STREAM_KEY); } catch {}
+    showToast(on ? 'PlayBridge: stream links are ON in this browser' : 'PlayBridge: stream links are OFF in this browser');
+  })();
+
+  // Media source picked by resolvePathFromItem, recorded in the caller's own ctx object (no shared state:
+  // two resolutions running at the same time can't mix their items).
+  const rememberSource = (ctx, item, source) => {
+    if (ctx) ctx.source = { itemId: item?.Id, mediaSourceId: source?.Id || '', container: source?.Container || item?.Container || '' };
+  };
+
+  const streamQuery = (src) => {
+    if (!src?.itemId || !streamLinksOn()) return '';
+    try {
+      const server = typeof ApiClient.serverAddress === 'function' ? ApiClient.serverAddress() : '';
+      const token = typeof ApiClient.accessToken === 'function' ? ApiClient.accessToken() : '';
+      if (!server || !token) return '';
+      const q = new URLSearchParams({ server, id: src.itemId, token });
+      if (src.mediaSourceId) q.set('ms', src.mediaSourceId);
+      if (src.container) q.set('c', src.container);
+      return '?' + q.toString();
+    } catch { return ''; }
+  };
+
+  // Items fetched once and shared (playlist check, prefetch, click), for 10 minutes
+  const itemCache = new Map();
+  const getItemCached = (userId, itemId) => {
+    const hit = itemCache.get(itemId);
+    if (hit && Date.now() - hit.t < 600000) return hit.p;
+    const p = ApiClient.getItem(userId, itemId);
+    itemCache.set(itemId, { p, t: Date.now() });
+    Promise.resolve(p).catch(() => itemCache.delete(itemId));
+    return p;
+  };
+
+  const toPlayBridgeUrl = (rawPath, src = null) => {
     const forward = String(rawPath).replace(/\\/g, '/');
     const encoded = encodeURIComponent(forward).replace(/%2F/g, '/');
-    return 'MPCJF://' + encoded;
+    return PROTOCOL + encoded + streamQuery(src);
+  };
+
+  const openLink = (path, src) => {
+    const url = toPlayBridgeUrl(path, src);
+    console.info('[PlayBridge] opening', url.replace(/token=[^&]+/, 'token=***'));
+    window.location.replace(url);
   };
 
   const isGuidLike = (s) =>
@@ -339,6 +413,7 @@
   let pointerDownOnDragHandle = false;
   document.addEventListener('pointerdown', (e) => {
     pointerDownOnDragHandle = eventPath(e).some(isDragHandle);
+    prefetchDetails();
   }, true);
 
   const findItemIdInPath = (path) => {
@@ -426,6 +501,7 @@
     if (itemId && msid) {
       lastSelectedByItem.set(itemId, msid);
       log('remember', { itemId, msid });
+      prefetchDetails();
     }
   }, true);
 
@@ -435,11 +511,11 @@
     try { e.stopImmediatePropagation(); } catch {}
   };
 
-  const resolvePathFromItem = async (itemId, mediaSourceId = null, depth = 0) => {
+  const resolvePathFromItem = async (itemId, mediaSourceId = null, depth = 0, ctx = null) => {
     if (!itemId || depth > 6) return null;
 
     const userId = await getUserId();
-    const item = await ApiClient.getItem(userId, itemId);
+    const item = await getItemCached(userId, itemId);
 
     // exceptions playlist + audio : on laisse Jellyfin gérer
     if (depth === 0 && isExcludedItem(item)) return SKIP_NATIVE;
@@ -452,12 +528,12 @@
         String(x?.Id || '').toLowerCase() === String(mediaSourceId).toLowerCase() ||
         String(x?.MediaSourceId || '').toLowerCase() === String(mediaSourceId).toLowerCase()
       );
-      if (wanted?.Path) return wanted.Path;
+      if (wanted?.Path) { rememberSource(ctx, item, wanted); return wanted.Path; }
     }
 
     // comportement standard
-    if (item?.Path && (!ms || ms.length <= 1)) return item.Path;
-    if (ms?.length && ms[0]?.Path) return ms[0].Path;
+    if (item?.Path && (!ms || ms.length <= 1)) { rememberSource(ctx, item, ms && ms[0]); return item.Path; }
+    if (ms?.length && ms[0]?.Path) { rememberSource(ctx, item, ms[0]); return ms[0].Path; }
 
     // Folder-like items: find a playable descendant
     const query = {
@@ -471,19 +547,47 @@
 
     const res = await ApiClient.getItems(userId, query);
     if (res?.Items?.length && res.Items[0]?.Id) {
-      return resolvePathFromItem(res.Items[0].Id, null, depth + 1);
+      return resolvePathFromItem(res.Items[0].Id, null, depth + 1, ctx);
     }
 
     return null;
   };
 
+  // ---- Details page: the path of the page's item is resolved in advance, so that a click opens the link
+  // at once (browsers only open playbridge:// links within a few seconds of a click)
+  const pathCache = new Map();
+  const cacheKey = (itemId, mediaSourceId) => itemId + '|' + (mediaSourceId || '');
+  const prefetchDetails = () => {
+    try {
+      const itemId = getIdFromHash();
+      if (!itemId || !/details/i.test(String(location.hash || ''))) return;
+      if (!window.ApiClient || typeof ApiClient.getItem !== 'function') return;
+      const msid = getSelectValueAsMediaSourceId(findVisibleSourceSelectInDocument()) || lastSelectedByItem.get(itemId) || null;
+      const key = cacheKey(itemId, msid);
+      if (pathCache.has(key)) return;
+      pathCache.set(key, null);
+      const ctx = {};
+      resolvePathFromItem(itemId, msid, 0, ctx)
+        .then((p) => { if (p && p !== SKIP_NATIVE) pathCache.set(key, { path: p, source: ctx.source, t: Date.now() }); else pathCache.delete(key); })
+        .catch(() => pathCache.delete(key));
+    } catch {}
+  };
+
   let _lastLaunchAt = 0;
-  const launchMPCJF = async (itemId, mediaSourceId = null, control = null) => {
+  const launchPlayBridge = async (itemId, mediaSourceId = null, control = null) => {
     const now = Date.now();
     if (now - _lastLaunchAt < 600) return;
     _lastLaunchAt = now;
 
-    const p = await resolvePathFromItem(itemId, mediaSourceId);
+    // prefetched (details page): opened at once, inside the click
+    const hit = pathCache.get(cacheKey(itemId, mediaSourceId));
+    if (hit && hit.path && now - hit.t < 600000) {
+      openLink(hit.path, hit.source);
+      return;
+    }
+
+    const ctx = {};
+    const p = await resolvePathFromItem(itemId, mediaSourceId, 0, ctx);
 
     if (p === SKIP_NATIVE) {
       log('playlist/audio -> native Jellyfin', { itemId });
@@ -492,13 +596,11 @@
     }
 
     if (!p) {
-      console.warn('[MPCJF] Unable to resolve a local Path for itemId:', itemId, 'mediaSourceId:', mediaSourceId);
+      console.warn('[PlayBridge] Unable to resolve a local Path for itemId:', itemId, 'mediaSourceId:', mediaSourceId);
       return;
     }
 
-    const url = toMPCJFUrl(p);
-    log('launch', { itemId, mediaSourceId, path: p, url });
-    window.location.replace(url);
+    openLink(p, ctx.source);
   };
 
   const shouldIgnore = (e) => {
@@ -528,7 +630,7 @@
     const mediaSourceId = getSelectedMediaSourceId(path, itemId);
 
     stopEvent(e);
-    launchMPCJF(itemId, mediaSourceId, control);
+    launchPlayBridge(itemId, mediaSourceId, control);
   };
 
   document.addEventListener('click', onUserActivate, true);
@@ -555,8 +657,12 @@
     const mediaSourceId = getSelectedMediaSourceId(path, itemId);
 
     stopEvent(e);
-    launchMPCJF(itemId, mediaSourceId, control);
+    launchPlayBridge(itemId, mediaSourceId, control);
   }, true);
+
+  window.addEventListener('hashchange', () => setTimeout(prefetchDetails, 400), true);
+  window.addEventListener('popstate', () => setTimeout(prefetchDetails, 400), true);
+  setTimeout(prefetchDetails, 1500);
 
   log('loaded');
 })();
