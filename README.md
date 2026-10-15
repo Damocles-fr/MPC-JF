@@ -3,7 +3,7 @@
   <img src="./PlayBridge-logo.png" alt="PlayBridge logo" width="128"><br>
 </p>
 
-Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC, PotPlayer, VLC, mpv, SMPlayer... with madVR, your shaders, your settings.
+Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC, PotPlayer, VLC, mpv, SMPlayer... With your plugins, settings, shaders, madVR....
 
 > [!IMPORTANT]
 > **Version 13 is a major update** (pre-release): MPC-JF becomes PlayBridge.
