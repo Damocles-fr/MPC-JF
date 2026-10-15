@@ -32,7 +32,8 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 - Stream and download modes: your player must open http links (MPC-BE, MPC-HC, PotPlayer, VLC, mpv and SMPlayer do), and your connection must carry the original file (no transcoding).
 - File path mode: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
 - Watched states are not synced.
-- Subtitle detection is restricted when subtitle files are not embedded in the video file or located in the same directory.
+- Separate subtitle files (.srt next to the video) are not loaded in the **stream and download modes**; embedded subtitles work
+- Subtitle detection is restricted when subtitle files are not embedded in the video file or located in the same directory (**Windows file path** mode).
 - A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
 
 > [!WARNING]
