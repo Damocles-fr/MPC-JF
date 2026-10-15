@@ -188,7 +188,7 @@ Plain lines in `%LOCALAPPDATA%\PlayBridge\PlayBridge.ini`, section `[Paths]`: `J
 ---
 
 ## Troubleshooting & tips
-- To Resume watching the last media, set your Player settings to resume the last file automatically at opening → Potplayer's preferences → General → Startup → Check Play the last played item (and open the player instead of jellyfin to resume).
+- To Resume watching the last media, set your Player settings to resume the last file automatically at opening → Potplayer's preferences → General → Startup → Check Play the last played item (and open the player instead of jellyfin to resume). (tested works in Windows File path mode)
 - **Nothing happens when I press Play**: first restart the browser (all windows), then use **Test from the browser** (PlayBridge Settings, page 2): if that test works, the browser side is fine and the script is the thing to check. Also press F12 in Jellyfin: the script prints `[PlayBridge] opening ...` in the console when it sends the link. Then look at `%LOCALAPPDATA%\PlayBridge\PlayBridge.log`:
   - no new entry at all: the browser didn't start PlayBridge. Check that the script runs (Violentmonkey icon, **Allow User Scripts** on Chrome/Edge, your Jellyfin address in the script), then refresh Jellyfin (F5).
   - an entry with `play:` and `player:`: PlayBridge started your player; the problem is on the player's side (path, options).
