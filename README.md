@@ -32,6 +32,8 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 - Stream and download modes: your player must open http links (MPC-BE, MPC-HC, PotPlayer, VLC, mpv and SMPlayer do), and your connection must carry the original file (no transcoding).
 - File path mode: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
 - Watched states are not synced.
+- Subtitle detection is restricted when subtitle files are not embedded in the video file or located in the same directory.
+- A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
 
 > [!WARNING]
 > **The only official repository is https://github.com/Damocles-fr/MPC-JF**
@@ -45,12 +47,11 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 
 ### 1. Download and extract PlayBridge.zip
 - **PlayBridge 13.0 pre-release** (this guide, guided installer, Jellyfin 12+ & 10.11.x): [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/tag/v13.0.0-pre1)
-- Previous stable version **MPC-JF 12.1** (manual installation, see [OLD-README.md](./OLD-README.md)): [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest)
 - Right-click the downloaded .zip → Properties → check **Unblock** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
 
 ### 2. Double-click `Install.cmd` (page 1: settings)
-Most users only check the player and click **Next**.
+Most users just check the player, click **Next**, and follow the in-app instructions to choose and install userscript.
 
 | Setting | What to do |
 |---|---|
@@ -64,7 +65,7 @@ Most users only check the player and click **Next**.
 > [!NOTE]
 > - Everything is installed for your Windows account only, in `%LOCALAPPDATA%\PlayBridge`. No admin rights, no registry file, no PowerShell execution policy to change.
 > - If Windows shows "Windows protected your PC": click **More info** → **Run anyway**.
-> - **PotPlayer** can't be started in fullscreen by a command-line option: set it in PotPlayer → Preferences → General → Startup → Window Size.
+> - **PotPlayer** can't be started in fullscreen directly by a command-line option: set it in PotPlayer → Preferences → General → Startup → Window Size.
 
 ### 3. Page 2: your browser (required)
 A browser never lets a program install a script by itself, so these clicks are yours. At the top, choose what **you open Jellyfin with**: a web browser (your default one is preselected, **Browse...** for any other), or the Jellyfin desktop app (see step 4). The page has a button for each step and opens everything in that browser.
@@ -144,7 +145,7 @@ Jellyfin gives the path **seen by your server** (`/share/CACHEDEV1_DATA/Movies/F
 **PlayBridge never searches when a video starts.** It checks these few paths and starts the player within a few seconds at most, even when the NAS disks are sleeping (the player then waits for them).
 
 #### When a video can't be found: the folder assistant
-Typical cases: Docker paths, USB disks plugged into the NAS (`/share/external/DEV3502_1/...`), renamed shares.
+Typical cases: Docker paths, some USB disks plugged into the NAS (`/share/external/DEV3502_1/...`), renamed shares.
 - PlayBridge shows a message and opens the assistant. **Search automatically** looks for the same file on all your drives and shares, two folder levels deep. Or **Pick the file myself...** in Windows.
 - The folder link is saved: every video of that folder then opens directly.
 - You can do the same in advance on page 1 of the setup: paste a Jellyfin path (movie page → ⋯ → **Media info** → Path) and click **Check**.
@@ -248,5 +249,5 @@ In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-
 - **DM me**: https://forum.jellyfin.org/u-damocles
 - GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
 
-###### Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Claude Fable), reviewed and tested by the author.
+###### Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
 ###### Prefer a version that isn't vibe-coded? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/latest), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.
