@@ -48,11 +48,11 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 
 ### 1. Download and extract PlayBridge.zip
 - **PlayBridge 13.0 pre-release** (this guide, guided installer, Jellyfin 12+ & 10.11.x): [PlayBridge.v13.0.0-pre1.zip](https://github.com/Damocles-fr/MPC-JF/releases/tag/v13.0.0-pre1)
-- Right-click the downloaded .zip → Properties → check **Unblock** → Apply.
+- ▸ **Right-click the downloaded .zip** → Properties → check **`Unblock`** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
+#### ▸ `Install.cmd` Most users just check the player, click **Next**, and follow the in-app instructions to choose and install the userscript.
 
 ### 2. Double-click `Install.cmd` (page 1: settings)
-Most users just check the player, click **Next**, and follow the in-app instructions to choose and install the userscript.
 
 | Setting | What to do |
 |---|---|
