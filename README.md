@@ -17,7 +17,7 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 ###### PlayBridge is the new name of MPC-JF (same repository, same links). Older installations and browser scripts are upgraded automatically, see [Updating from MPC-JF](#updating-from-mpc-jf). The previous guide is kept here: [OLD-README.md](./OLD-README.md).
 
 ### ▶︎ Features
-- **Guided installer with a GUI**: double-click `Install.cmd`, pick your player, done. No admin rights, no file to edit, no registry file.
+- **Guided installer with a GUI**: double-click `Install.cmd`, pick your player. No admin rights, no file to edit, no registry file.
 - **Jellyfin stream mode (default)**: your player plays the original file through Jellyfin, no conversion. Works at home and remotely, without any NAS share, mapped drive or folder setup. PlayBridge waits for sleeping NAS disks before starting the player.
 - **Windows file path mode**: your player opens the file itself (local disk, NAS share, mapped drive): fastest seeking, subtitle files next to the video. PlayBridge **finds your NAS videos by itself** through your network drives and shares; if a folder can't be found, a small assistant links it in one click, once. Or both: the file path, with the stream as fallback.
 - Detects your installed **players** (MPC-BE, MPC-HC, PotPlayer, VLC, mpv, mpv.net, SMPlayer, MPC-QT, KMPlayer, GOM Player; any other player with **Browse...**), your **browsers** (or pick any browser .exe) and your **Jellyfin server**, and prepares the browser script for your PC (your address and mode inside).
