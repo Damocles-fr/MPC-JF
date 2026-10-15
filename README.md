@@ -28,7 +28,7 @@
 - **Jellyfin stream mode (default)**: your player plays the original file through Jellyfin, no conversion. Works at home and remotely, without any NAS share, mapped drive or folder setup. PlayBridge waits for sleeping NAS disks before starting the player.
 - **Windows file path mode**: your player opens the file itself (local disk, NAS share, mapped drive): fastest seeking, subtitle files next to the video. PlayBridge **finds your NAS videos by itself** through your network drives and shares; if a folder can't be found, a small assistant links it in one click, once. Or both: the file path, with the stream as fallback.
 - Detects your installed **players** (MPC-BE, MPC-HC, PotPlayer, VLC, mpv, mpv.net, SMPlayer, MPC-QT, KMPlayer, GOM Player; any other player with **Browse...**), your **browsers** (or pick any browser .exe) and your **Jellyfin server**, and prepares the browser script for your PC (your address and mode inside).
-- Two scripts to choose from: **all Play buttons** open your player, or **a new yellow button** only.
+- Two scripts to choose from: **all Play buttons** open your player, or **a new yellow button** only. <p align="center"><img src="./PlayBridgeIcon.png" alt="Option B: the yellow button" width="500"><br><font size="2" color="gray">Option B: the separated yellow button</font></p>
 - Jellyfin Web through a browser script (Firefox, Chrome, Edge, Brave...).
 - **Jellyfin Media Player / Jellyfin Desktop** (Windows app) through the JavaScript Injector plugin (experimental).
 - **All settings in one window** ( menu → PlayBridge Settings), remembered for next time. Uninstall from the same window.
