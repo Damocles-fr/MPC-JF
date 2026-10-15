@@ -76,12 +76,8 @@ A browser never lets a program install a script by itself, so these clicks are y
 |---|---|
 | **1. Install Violentmonkey** | The button opens the right store for your browser ([Get Violentmonkey](https://violentmonkey.github.io/get-it/)). Tampermonkey works too. **Chrome, Edge, Brave...**: then right-click the extension icon → **Manage extension** → turn on **Allow User Scripts** (or **Developer mode** in the extensions page). |
 | **2. Your Jellyfin address** | The address you type to open Jellyfin. The setup looks for Jellyfin on this PC and on your NAS. See [Auto-update](#auto-update-of-the-browser-script) for the checkbox. |
-| **3. Install ONE of these two scripts** | **A**: every Play and Resume button of Jellyfin opens your player. **B**: Play stays in Jellyfin, a new yellow button opens your player. The script is prepared with your Jellyfin address and your mode; Violentmonkey opens its page: click **Install**. If you change how videos open or your Jellyfin address later, this page shows a red warning: install the script again. |
+| **3. Install ONE of these two scripts** | **A**: **every Play and Resume button of Jellyfin opens your player**. **B**: Play stays in Jellyfin, a **new yellow** button opens your player. The script is prepared with your Jellyfin address and your mode; Violentmonkey opens its page: click **Install**. If you change how videos open or your Jellyfin address later, this page shows a red warning: install the script again. <p align="center"><img src="./PlayBridgeIcon.png" alt="Option B: the yellow button" width="500"><br><font size="2" color="gray">Option B: the yellow button</font></p>
 | **4. Restart the browser, then test** | Close **all** the windows of your browser and open it again: a browser learns the new `playbridge://` link only when it starts. **Test from the browser** opens a small page with a button that starts PlayBridge like Jellyfin would (the browser asks to open PlayBridge: tick **Always allow**). Then press Play in Jellyfin. |
-
-<p align="center">
-  <img src="./PlayBridgeIcon.png" alt="Option B: the yellow button" width="500"><br>
-</p>
 
 Extra steps appear only when needed (auto-update with another address than `localhost`, or auto-update with a Jellyfin link mode).
 
