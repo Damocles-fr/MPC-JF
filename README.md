@@ -3,7 +3,7 @@
   <img src="./PlayBridge-logo.png" alt="PlayBridge logo" width="128"><br>
 </p>
 
-### ▸ Press Play in Jellyfin UI, watch in **your own player** on Windows: PotPlayer, MPC-BE, MPC-HC, VLC, mpv, SMPlayer... While keeping your JF mods, player settings, shaders, madVR....
+### ▸ Press Play in Jellyfin UI, watch in **your own player** on Windows: PotPlayer, MPC-BE, MPC-HC, VLC, mpv, SMPlayer... While keeping your JF mods, player settings, shaders, madVR etc.
 ### ▸ **This is not a client**. Think of it as a tool that gives easy access to your own media player.
 
 
