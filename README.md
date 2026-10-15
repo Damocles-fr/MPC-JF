@@ -12,11 +12,12 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 > - **Your choice**: Jellyfin stream or download link (Jellyfin API), the **Windows file path** (local disk, NAS share), or the file path with the stream as fallback.
 > - **All settings in one window**: player, fullscreen, how videos open, browser, Jellyfin address, browser script, NAS folders. Change anything later from the Start menu.
 >
-> The previous stable version (MPC-JF 12.1) is still available, see the download links below.
+> The previous stable version ([MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/latest)) is still available, see the end of this page.
 
 ###### PlayBridge is the new name of MPC-JF (same repository, same links). Older installations and browser scripts are upgraded automatically, see [Updating from MPC-JF](#updating-from-mpc-jf). The previous guide is kept here: [OLD-README.md](./OLD-README.md).
 
 ### ▶︎ Features
+- **Keep the original Jellyfin Web interface** (Jellyfin 12 included) with all your plugins, themes and userscripts: PlayBridge only changes what happens when you press Play.
 - **Guided installer with a GUI**: double-click `Install.cmd`, pick your player. No admin rights, no file to edit, no registry file.
 - **Jellyfin stream mode (default)**: your player plays the original file through Jellyfin, no conversion. Works at home and remotely, without any NAS share, mapped drive or folder setup. PlayBridge waits for sleeping NAS disks before starting the player.
 - **Windows file path mode**: your player opens the file itself (local disk, NAS share, mapped drive): fastest seeking, subtitle files next to the video. PlayBridge **finds your NAS videos by itself** through your network drives and shares; if a folder can't be found, a small assistant links it in one click, once. Or both: the file path, with the stream as fallback.
@@ -52,7 +53,7 @@ Press Play in Jellyfin, watch in **your own player** on Windows: MPC-BE, MPC-HC,
 - Extract it anywhere (your Downloads folder is fine).
 
 ### 2. Double-click `Install.cmd` (page 1: settings)
-Most users just check the player, click **Next**, and follow the in-app instructions to choose and install userscript.
+Most users just check the player, click **Next**, and follow the in-app instructions to choose and install the userscript.
 
 | Setting | What to do |
 |---|---|
@@ -98,7 +99,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 ###### If the DeviceId box doesn't appear, find `deviceId` in the app log: `%LOCALAPPDATA%\JellyfinMediaPlayer\logs\JellyfinMediaPlayer.log` or `%LOCALAPPDATA%\jellyfin-desktop\Logs\jellyfin-desktop.log` (paste the path in the File Explorer address bar, open with Notepad, `Ctrl + F` → `deviceId`, copy the long string after it). The unofficial Jellium Desktop client doesn't seem to support external scripts.
 ###### Alternative for the yellow button in the app: Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
-### 5. Done !
+### 5. Done!
 Change anything later: **Start menu → PlayBridge Settings** (or run `Install.cmd` again). The setup reopens with your last choices. The **Help** button opens this page.
 
 ---
