@@ -10,6 +10,10 @@
 > Please report issues with your `PlayBridge.log`.
 > ###### The previous stable version (MPC-JF 12.1) stays available in the releases. 
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeUI.webp" alt="Android view" width="900"><br>
+</p>
+
 ## Changelog
 - New guided installer (`Install.cmd`) with a GUI; no admin rights, no file to edit, no registry file
 - New Jellyfin link modes: stream link (default for new installations) or download link, at home and remotely, no NAS setup (ApiKey, Jellyfin 12 ready)
@@ -25,10 +29,14 @@
 - Development heavily LLM-assisted since this version (Claude Opus & Fable). The previous stable version (MPC-JF 12.1) stays available. 
 
 ## Known limitations
-- The player must be able to open http links **for the stream and download modes**
-- **File path mode**: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
-- Separate subtitle files (.srt next to the video) are not loaded in the **stream and download modes**; embedded subtitles work
-- Subtitle detection is restricted when subtitle files are not embedded in the video file or located in the same directory (**Windows file path** mode).
-- Restart the browser after the installation: it learns the new `playbridge://` link only when it starts
-- Watched states are not synced.
+- Watched states are not synced in Jellyfin.
+- **Stream or download modes** : the player must be able to open http links.
+- **Windows File path mode**: compatible with all players.
+- **Stream or download modes** : separate subtitle files (.srt next to the video) are not loaded; embedded work; subtitles located in the JF directory are not loaded.
+- **Windows File path mode**: separate subtitle files (.srt next to the video) work; embedded work; subtitles located in the JF directory are not loaded.
+- **Windows File path mode**: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
+- Restart the browser after the installation: it learns the new `playbridge://` link only when it starts.
 - A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
+
+
+<hr /><em>This discussion was created from the release <a href='https://github.com/Damocles-fr/MPC-JF/releases/tag/v13.0.0-pre1'>PlayBridge v13.0.0-pre1</a>.</em>
