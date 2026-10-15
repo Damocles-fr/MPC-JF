@@ -1,4 +1,4 @@
-# PlayBridge ▸ External player launcher for Jellyfin (Windows)
+# PlayBridge ▸ External player launcher for Jellyfin
 <p align="center">
   <img src="./PlayBridge-logo.png" alt="PlayBridge logo" width="128"><br>
 </p>
