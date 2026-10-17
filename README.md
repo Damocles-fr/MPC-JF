@@ -245,7 +245,7 @@ In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-
 
 ---
 > [!WARNING]
-> **The only official repository is https://github.com/Damocles-fr/PlayBridge** (or https://github.com/Damocles-fr/MPC-JF)
+> **The only official repository is https://github.com/Damocles-fr/PlayBridge** (or https://github.com/Damocles-fr/MPC-JF )
 >
 > Malicious clones sometimes rank high on Google and distribute ZIP files containing malware.
 > Please report any fake repositories: "Report repository" (middle of the right sidebar) → Malware
