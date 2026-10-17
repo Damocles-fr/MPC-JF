@@ -1,6 +1,6 @@
 # PlayBridge Core: setup and settings window, folder assistant, install and uninstall.
 # Don't start this file yourself: double-click Install.cmd (or Start menu > PlayBridge Settings).
-# https://github.com/Damocles-fr/MPC-JF
+# https://github.com/Damocles-fr/PlayBridge
 param(
     [string]$MapUrl,
     [switch]$Uninstall,
@@ -15,9 +15,9 @@ $OldHiddenDir = Join-Path ([string]$env:LOCALAPPDATA) 'MPCJF'       # Install-MP
 $OldManualDir = Join-Path ([string]$env:ProgramData) 'MPC-JF'       # manual installation (MPC-JF 12.1 and older)
 $ProtocolSubKey = 'Software\Classes\playbridge'
 $LegacyProtocolSubKey = 'Software\Classes\MPCJF'                     # links of older browser scripts keep working
-$RepoUrl = 'https://github.com/Damocles-fr/MPC-JF'
+$RepoUrl = 'https://github.com/Damocles-fr/PlayBridge'
 $ReadmeUrl = $RepoUrl + '#readme'
-$RawUrl = 'https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/'
+$RawUrl = 'https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/'
 $InjectorUrl = 'https://github.com/n00bcodr/Jellyfin-JavaScript-Injector'
 $VMStore = @{
     chromium = 'https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag'
