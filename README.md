@@ -39,11 +39,10 @@
 - Watched states are not synced in Jellyfin.
 - **Stream or download modes** : the player must be able to open http links.
 - **Windows File path mode**: compatible with all players.
+- **Windows File path mode**: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
 - **Stream or download modes** : separate subtitle files (.srt next to the video) are not loaded; embedded work; subtitles located in the JF directory are not loaded.
 - **Windows File path mode**: separate subtitle files (.srt next to the video) work; embedded work; subtitles located in the JF directory are not loaded.
-- **Windows File path mode**: your videos must be reachable from Windows (local disk, NAS share, mapped drive).
-- Restart the browser after the installation: it learns the new `playbridge://` link only when it starts.
-- A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
+- **Stream or download modes** : A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
 
 > [!WARNING]
 > **The only official repository is https://github.com/Damocles-fr/MPC-JF**
