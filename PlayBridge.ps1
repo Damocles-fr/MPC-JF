@@ -2,7 +2,7 @@
 # Started by your browser through playbridge:// links (registered by Install.cmd).
 # Settings: PlayBridge.ini next to this file. Change them with Start menu > PlayBridge Settings
 # (or Install.cmd). Started without a link, this file opens PlayBridge Settings.
-# https://github.com/Damocles-fr/MPC-JF
+# https://github.com/Damocles-fr/PlayBridge
 param(
     [string]$Url,
     [switch]$LoadOnly
