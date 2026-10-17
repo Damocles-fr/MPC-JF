@@ -17,14 +17,14 @@
 > - **Easy install with a GUI**: double-click `Install.cmd`, pick your player, click **Next**. No admin rights, no file to edit.
 > - **Works remotely too**: the new **Jellyfin stream** mode (default) plays through Jellyfin, at home or away. No NAS share or mapped drive needed.
 > - **Your choice**: Jellyfin stream or download link (Jellyfin API), the **Windows file path** (local disk, NAS share), or the file path with the stream as fallback.
-> - **All settings in one window**: player, fullscreen, how videos open, browser, Jellyfin address, browser script, NAS folders. Change anything later : `Install.cmd`.
+> - **All settings in one window**: player, fullscreen, how videos open, browser, Jellyfin address, browser script, NAS folders. Change anything later : Start menu → `PlayBridge Settings`.
 >
 
 ###### PlayBridge is the new name of MPC-JF (same repository, same links). Older installations and browser scripts are upgraded automatically, see [Updating from MPC-JF](#updating-from-mpc-jf). The previous stable version is still available, see the end of this page.
 
 ### ▶︎ Features
 - **Keep the original Jellyfin Web interface** (Jellyfin 12 included) with all your plugins, themes and userscripts: PlayBridge only changes what happens when you press Play.
-- **Guided installer with a GUI**: double-click `Install.cmd`, pick your player. No admin rights, no file to edit, no registry file.
+- **Guided installer with a GUI**: double-click ``, pick your player. No admin rights, no file to edit, no registry file.
 - **Jellyfin stream mode (default)**: your player plays the original file through Jellyfin, no conversion. Works at home and remotely, without any NAS share, mapped drive or folder setup. PlayBridge waits for sleeping NAS disks before starting the player.
 - **Windows file path mode**: your player opens the file itself (local disk, NAS share, mapped drive): fastest seeking, subtitle files next to the video. PlayBridge **finds your NAS videos by itself** through your network drives and shares; if a folder can't be found, a small assistant links it in one click, once. Or both: the file path, with the stream as fallback.
 - Detects your installed **players** (MPC-BE, MPC-HC, PotPlayer, VLC, mpv, mpv.net, SMPlayer, MPC-QT, KMPlayer, GOM Player; any other player with **Browse...**), your **browsers** (or pick any browser .exe) and your **Jellyfin server**, and prepares the browser script for your PC (your address and mode inside).
@@ -59,9 +59,9 @@
 - [PlayBridge.v13.0.0-pre1.zip](https://github.com/Damocles-fr/MPC-JF/releases/tag/v13.0.0-pre1)
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
-- ▸ `Install.cmd` Most users just follow the in-app instructions to set up, choose, and install the userscript.
+- ▸ `` Most users just follow the in-app instructions to set up, choose, and install the userscript.
 
-### 2. Full setup guide. Double-click `Install.cmd` (page 1: settings)
+### 2. Full setup guide. Double-click `` (page 1: settings)
 
 | Setting | What to do |
 |---|---|
@@ -104,7 +104,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 ###### Alternative for the yellow button in the app: Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
 ### 5. Done!
-Change anything later: **`Install.cmd` → PlayBridge Settings**. The setup reopens with your last choices. The **Help** button opens this page.
+Change anything later: **Start menu → `PlayBridge Settings` (or run `` again)**. The setup reopens with your last choices. The **Help** button opens this page.
 
 ---
 
@@ -183,7 +183,7 @@ Plain lines in `%LOCALAPPDATA%\PlayBridge\PlayBridge.ini`, section `[Paths]`: `J
      ```
 
 ## Uninstall
-** `Install.cmd` → Uninstall...**. It also offers to remove an old `MPCJF.reg` registration. Then remove the script from Violentmonkey.
+** Start menu → `PlayBridge Settings` (or run `Install.cmd` again) → Uninstall...**. It also offers to remove an old `MPCJF.reg` registration. Then remove the script from Violentmonkey.
 
 ---
 
@@ -196,7 +196,7 @@ Plain lines in `%LOCALAPPDATA%\PlayBridge\PlayBridge.ini`, section `[Paths]`: `J
 - **Stream mode: the player shows an error, or PlayBridge says Jellyfin refused the video**: look at the `server   :` line in `PlayBridge.log`. `HTTP 401`: sign in to Jellyfin again in the browser. `HTTP 403`: your Jellyfin user isn't allowed (download mode: allow downloads for this user, or use the stream mode). `HTTP 404`: Jellyfin can't find the file (refresh the library). `no answer`: this PC can't reach the Jellyfin address used in the browser.
 - **PlayBridge says the browser script doesn't send Jellyfin links**: the script was installed for the Windows file path mode. PlayBridge Settings → **Next** → install script A or B again.
 - **Only ONE script at a time**: having both A and B, or an old MPC-JF script next to a PlayBridge one, in Violentmonkey gives double launches or strange behaviour. Remove the others.
-- **Videos stop opening after a big Windows or player update**: `Install.cmd` → PlayBridge Settings → **Next**.
+- **Videos stop opening after a big Windows or player update**: Start menu → `PlayBridge Settings` (or run `Install.cmd` again) → PlayBridge Settings → **Next**.
 - **"Scripts are disabled on this system"** when running `Install.cmd`: your PowerShell execution policy is locked by a group policy (company PC). Ask your administrator.
 - **A PowerShell window flashes** at each video: VBScript is missing on your Windows (Settings → System → Optional features → VBSCRIPT). Install it, then PlayBridge Settings → Next.
 - You will have to checkmark the media as watched in Jellyfin yourself...
@@ -243,7 +243,7 @@ ScriptMatch=http://192.168.1.24:8096/*
 In the zip and in `%LOCALAPPDATA%\PlayBridge`:
 - ``` Install.cmd ``` : Opens the setup. The only file to double-click.
 - ``` PlayBridge.ps1 ``` : Main script, started by your browser through `playbridge://` links. No need to edit it.
-- ``` PlayBridge-Core.ps1 ``` : Setup window, folder assistant, update and uninstall (`Install.cmd` → PlayBridge Settings).
+- ``` PlayBridge-Core.ps1 ``` : Setup window, folder assistant, update and uninstall (Start menu → `PlayBridge Settings` or run `Install.cmd` again).
 - ``` PlayBridge.user.js ``` / ``` PlayBridgeIcon.user.js ``` : Browser scripts (A / B). The setup installs them in Violentmonkey.
 - ``` PlayBridge-JSinjector-deviceID.js ``` : Jellyfin Media Player / Jellyfin Desktop script for the JS Injector plugin.
 - ``` PlayBridge.ico ```, ``` PlayBridge-logo.png ```, ``` PlayBridgeIcon.png ``` : Images of the setup.
