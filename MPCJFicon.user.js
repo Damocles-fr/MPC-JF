@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PlayBridge - yellow button for Jellyfin (formerly MPC-JF icon)
-// @namespace    https://github.com/Damocles-fr/PlayBridge/
+// @namespace    https://github.com/Damocles-fr/MPCJF/
 // @version      13.0.1
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJFicon.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJFicon.user.js

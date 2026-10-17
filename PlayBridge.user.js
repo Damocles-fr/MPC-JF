@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PlayBridge - external player launcher for Jellyfin
-// @namespace    https://github.com/Damocles-fr/PlayBridge/
+// @namespace    https://github.com/Damocles-fr/MPC-JF/
 // @version      13.0.1
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/PlayBridge.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/PlayBridge.user.js
