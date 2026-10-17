@@ -20,8 +20,6 @@
 > - **All settings in one window**: player, fullscreen, how videos open, browser, Jellyfin address, browser script, NAS folders. Change anything later : Start menu → `PlayBridge Settings`.
 >
 
-###### PlayBridge is the new name of MPC-JF (same repository, same links). Older installations and browser scripts are upgraded automatically, see [Updating from MPC-JF](#updating-from-mpc-jf). The previous stable version is still available, see the end of this page.
-
 ### ▶︎ Features
 - **Keep the original Jellyfin Web interface** (Jellyfin 12 included) with all your plugins, themes and userscripts: PlayBridge only changes what happens when you press Play.
 - **Guided installer with a GUI**: double-click `Install.cmd`, pick your player. No admin rights, no file to edit, no registry file.
@@ -44,15 +42,7 @@
 - **Windows File path mode**: separate subtitle files (.srt next to the video) work; embedded work; subtitles located in the JF directory are not loaded.
 - **Stream or download modes** : A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
 
-> [!WARNING]
-> **The only official repository is https://github.com/Damocles-fr/MPC-JF**
->
-> Malicious clones sometimes rank high on Google and distribute ZIP files containing malware.
-> Please report any fake repositories: "Report repository" (middle of the right sidebar) → Malware
-
----
-
-## Installation
+# Installation
 
 ### 1. Quick installation **PlayBridge 13.0.1**
 - [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) (latest version, [release page](https://github.com/Damocles-fr/MPC-JF/releases/latest))
@@ -253,6 +243,11 @@ Created by the setup: ``` PlayBridge.ini ``` (your settings), ``` PlayBridge.log
 In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-update targets of the old MPC-JF scripts, same code as the PlayBridge scripts (do not use them for a new installation).
 
 ---
+> [!WARNING]
+> **The only official repository is https://github.com/Damocles-fr/MPC-JF**
+>
+> Malicious clones sometimes rank high on Google and distribute ZIP files containing malware.
+> Please report any fake repositories: "Report repository" (middle of the right sidebar) → Malware
 
 ### Transparency
 - Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
