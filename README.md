@@ -44,7 +44,7 @@
 
 # Installation
 
-### Quick installation **PlayBridge 13.0.1**
+### Quick installation **PlayBridge**
 - [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) (latest version, [release page](https://github.com/Damocles-fr/MPC-JF/releases/latest))
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
