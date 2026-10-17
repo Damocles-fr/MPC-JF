@@ -41,6 +41,7 @@
 - **Stream or download modes** : separate subtitle files (.srt next to the video) are not loaded; embedded work; subtitles located in the JF directory are not loaded.
 - **Windows File path mode**: separate subtitle files (.srt next to the video) work; embedded work; subtitles located in the JF directory are not loaded.
 - **Stream or download modes** : A stream contains your Jellyfin access token. Your player may keep it in its "recent files" list. Select the **Windows file path** option to avoid this.
+- Recommended : if videos folders are reachable from Windows, use `Windows file path, or Jellyfin stream when not found` option.
 
 # Installation
 
