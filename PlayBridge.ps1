@@ -8,7 +8,7 @@ param(
     [switch]$LoadOnly
 )
 
-$PlayBridge_Version = '13.0.0'
+$PlayBridge_Version = '13.0.1'
 $PlayBridge_DefaultPlayer = 'C:\Program Files\MPC-BE\mpc-be64.exe'
 $PlayBridge_DefaultArguments = '/fullscreen'
 # Longest wait for one "is the file there?" check. Past that (NAS disks waking up, slow network),
@@ -671,7 +671,7 @@ if (-not $Url) {
 if ($Url -match '^(playbridge|mpcjf):(//)?playbridge-test/?$') {
     # "Test from the browser" button of the setup: the browser did start PlayBridge
     Write-PlayBridgeLog $here @('', ('{0}  PlayBridge {1}  browser test link received' -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $PlayBridge_Version))
-    [void](Show-PlayBridgeMessage "Success: your browser started PlayBridge.`n`nThe browser side works. If Jellyfin's Play button still does nothing, the browser script is the thing to check (PlayBridge Settings, browser page)." 'OK' 'Information')
+    [void](Show-PlayBridgeMessage "Success: your browser started PlayBridge.`n`nThe playbridge:// link works in this browser.`n`nIf Jellyfin's Play button still does nothing, check the PlayBridge script in Violentmonkey: it must be installed, enabled and made for the address you use to open Jellyfin. Then reload the Jellyfin page (F5). To install it again: PlayBridge Settings > Next > step 3." 'OK' 'Information')
     [Environment]::Exit(0)
 }
 

@@ -13,7 +13,7 @@
 
 
 > [!IMPORTANT]
-> **Version 13 is a major update** (pre-release): MPC-JF becomes PlayBridge.
+> **Version 13 is a major update**: MPC-JF becomes PlayBridge.
 > - **Easy install with a GUI**: double-click `Install.cmd`, pick your player, click **Next**. No admin rights, no file to edit.
 > - **Works remotely too**: the new **Jellyfin stream** mode (default) plays through Jellyfin, at home or away. No NAS share or mapped drive needed.
 > - **Your choice**: Jellyfin stream or download link (Jellyfin API), the **Windows file path** (local disk, NAS share), or the file path with the stream as fallback.
@@ -24,14 +24,14 @@
 
 ### ▶︎ Features
 - **Keep the original Jellyfin Web interface** (Jellyfin 12 included) with all your plugins, themes and userscripts: PlayBridge only changes what happens when you press Play.
-- **Guided installer with a GUI**: double-click ``, pick your player. No admin rights, no file to edit, no registry file.
+- **Guided installer with a GUI**: double-click `Install.cmd`, pick your player. No admin rights, no file to edit, no registry file.
 - **Jellyfin stream mode (default)**: your player plays the original file through Jellyfin, no conversion. Works at home and remotely, without any NAS share, mapped drive or folder setup. PlayBridge waits for sleeping NAS disks before starting the player.
 - **Windows file path mode**: your player opens the file itself (local disk, NAS share, mapped drive): fastest seeking, subtitle files next to the video. PlayBridge **finds your NAS videos by itself** through your network drives and shares; if a folder can't be found, a small assistant links it in one click, once. Or both: the file path, with the stream as fallback.
 - Detects your installed **players** (MPC-BE, MPC-HC, PotPlayer, VLC, mpv, mpv.net, SMPlayer, MPC-QT, KMPlayer, GOM Player; any other player with **Browse...**), your **browsers** (or pick any browser .exe) and your **Jellyfin server**, and prepares the browser script for your PC (your address and mode inside).
 - Two scripts to choose from: **all Play buttons** open your player, or **a new yellow button** only. <p align="center"><img src="./PlayBridgeIcon.png" alt="Option B: the yellow button" width="500"><br><font size="2" color="gray">Option B: the separated yellow button</font></p>
 - Jellyfin Web through a browser script (Firefox, Chrome, Edge, Brave...).
 - **Jellyfin Media Player / Jellyfin Desktop** (Windows app) through the JavaScript Injector plugin (experimental).
-- **All settings in one window** ( menu → PlayBridge Settings), remembered for next time. Uninstall from the same window.
+- **All settings in one window** (Start menu → PlayBridge Settings), remembered for next time. Uninstall from the same window.
 - Compatible with Jellyfin 12+ (and older versions). Older MPC-JF installations and scripts are upgraded automatically.
 
 #### Requirements & limitations
@@ -55,13 +55,13 @@
 
 ## Installation
 
-### 1. Quick installation **PlayBridge 13.0 pre-release**
-- [PlayBridge.v13.0.0-pre1.zip](https://github.com/Damocles-fr/MPC-JF/releases/tag/v13.0.0-pre1)
+### 1. Quick installation **PlayBridge 13.0.1**
+- [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) (latest version, [release page](https://github.com/Damocles-fr/MPC-JF/releases/latest))
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
-- ▸ `` Most users just follow the in-app instructions to set up, choose, and install the userscript.
+- ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript.
 
-### 2. Full setup guide. Double-click `` (page 1: settings)
+### 2. Full setup guide. Double-click `Install.cmd` (page 1: settings)
 
 | Setting | What to do |
 |---|---|
@@ -75,7 +75,7 @@
 > [!NOTE]
 > - Everything is installed for your Windows account only, in `%LOCALAPPDATA%\PlayBridge`. No admin rights, no registry file, no PowerShell execution policy to change.
 > - If Windows shows "Windows protected your PC": click **More info** → **Run anyway**.
-> - **PotPlayer** can't be ed in fullscreen directly by a command-line option: set it in PotPlayer → Preferences → General → Startup → Window Size.
+> - **PotPlayer** can't be started in fullscreen directly by a command-line option: set it in PotPlayer → Preferences → General → Startup → Window Size.
 
 ### 3. Page 2: your browser (required)
 A browser never lets a program install a script by itself, so these clicks are yours. At the top, choose what **you open Jellyfin with**: a web browser (your default one is preselected, **Browse...** for any other), or the Jellyfin desktop app (see step 4). The page has a button for each step and opens everything in that browser.
@@ -261,4 +261,4 @@ In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-
 - GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
 
 ###### Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
-###### Prefer a version that isn't vibe-coded? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/latest), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.
+###### Prefer a version that isn't vibe-coded? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/tag/12.1.0), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.

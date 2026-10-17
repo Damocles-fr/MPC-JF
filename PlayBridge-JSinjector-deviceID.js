@@ -1,6 +1,6 @@
 /* jshint esversion: 11, browser: true, devel: true */
 /* globals ApiClient */
-// PlayBridge 13.0.0 - JS Injector version for Jellyfin Media Player / Jellyfin Desktop (Windows, experimental)
+// PlayBridge 13.0.1 - JS Injector version for Jellyfin Media Player / Jellyfin Desktop (Windows, experimental)
 // https://github.com/Damocles-fr/MPC-JF
 (() => {
   'use strict';

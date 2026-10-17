@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PlayBridge - yellow button for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPC-JF/
-// @version      13.0.0
+// @version      13.0.1
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js
 // @description  Adds a yellow button on Jellyfin item pages that opens the video in your own player through PlayBridge (Windows). Native Play buttons stay untouched.

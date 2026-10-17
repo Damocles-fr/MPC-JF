@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PlayBridge - external player launcher for Jellyfin
 // @namespace    https://github.com/Damocles-fr/MPC-JF/
-// @version      13.0.0
+// @version      13.0.1
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridge.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridge.user.js
 // @description  Jellyfin Play/Resume buttons open your own video player through PlayBridge (Windows)
