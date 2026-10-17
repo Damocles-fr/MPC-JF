@@ -1,7 +1,7 @@
 /* jshint esversion: 11, browser: true, devel: true */
 /* globals ApiClient */
 // PlayBridge 13.0.1 - JS Injector version for Jellyfin Media Player / Jellyfin Desktop (Windows, experimental)
-// https://github.com/Damocles-fr/MPC-JF
+// https://github.com/Damocles-fr/PlayBridge
 (() => {
   'use strict';
   const ALLOWED_DEVICE_ID = 'PUT_DEVICE_ID_HERE';
