@@ -49,7 +49,7 @@
 - [PlayBridge.zip](https://github.com/Damocles-fr/PlayBridge/releases/latest/download/PlayBridge.zip) latest
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply
 - Extract it anywhere
-- ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript
+- ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up
 
 ### Full setup guide
 
