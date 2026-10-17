@@ -23,8 +23,8 @@
 
 ## Installation
 
-### 1. Download MPC-JF.zip
-Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://github.com/Damocles-fr/MPC-JF/releases/)
+### 1. Download .zip
+Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://github.com/Damocles-fr/PlayBridge/releases/)
 
 ### 2. Place Required Files
 - Before extracting the archive, right-click the downloaded .zip → Properties → check **Unblock** → Apply. This also unblocks the extracted .ps1 scripts required for execution.
@@ -43,11 +43,11 @@ Download **latest (compatible Jellyfin 12+ & 10.11.x)** : [MPC-JF.zip](https://g
 - In your web browser, install ViolentMonkey extension :
 https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 	###### Alternatively you can use TamperMonkey or any userscript extension
-- Install ***MPCJF.user.js*** : **replace all playing functions**, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js)
+- Install ***MPCJF.user.js*** : **replace all playing functions**, one-click install with auto-update : [MPCJF.user.js](https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJF.user.js)
 
 	### Or
 
-	Install ***MPCJFicon.user.js*** alternative : **add a new yellow Play button to the item pages**, external player is only triggered from that icon, one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js)
+	Install ***MPCJFicon.user.js*** alternative : **add a new yellow Play button to the item pages**, external player is only triggered from that icon, one-click install with auto-update : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJFicon.user.js)
 <p align="center">
   <img src="./MPCJFicon.webp" alt="MPCJFicon" width="500"><br>
 </p>
@@ -75,7 +75,7 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 
 ###### Notes : If you do not find `deviceId:` or the one you copy/paste is not working, close and reopen/reconnect Jellyfin Media Player, then reopen the log file and search again at the bottom.
 ###### Notes : The new unofficial Jellium Desktop client doesn't seem to support launching external scripts.
-###### Alternative : Add a new yellow Play button to the item pages that will show everywhere, external player is only triggered from that icon  : Go to Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it MPCJFbutton or whatever, then copy/paste the entire : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJFicon.user.js) Check **Enabled**, then click **Save**.
+###### Alternative : Add a new yellow Play button to the item pages that will show everywhere, external player is only triggered from that icon  : Go to Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it MPCJFbutton or whatever, then copy/paste the entire : [MPCJFicon.user.js](https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJFicon.user.js) Check **Enabled**, then click **Save**.
 
 ### 7. Enable PowerShell Scripts Execution to allow MPCJF.ps1
 - In Windows 11, go to, Settings → Developers → PowerShell → Allow unsigned scripts
@@ -153,6 +153,6 @@ https://addons.mozilla.org/fr/firefox/addon/violentmonkey/
 ---
 
 ### Need Help?
-- Don't hesitate to open an [issue](https://github.com/Damocles-fr/MPC-JF/issues)
+- Don't hesitate to open an [issue](https://github.com/Damocles-fr/PlayBridge/issues)
 - **DM me**: https://forum.jellyfin.org/u-damocles
 - GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
