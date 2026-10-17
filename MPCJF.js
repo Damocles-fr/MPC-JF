@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         MPC-JF - MPC launcher for Jellyfin
-// @namespace    https://github.com/Damocles-fr/PlayBridge/
+// @namespace    https://github.com/Damocles-fr/MPCJF/
 // @version      12.1.0
 // @updateURL    https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJF.user.js
 // @downloadURL  https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJF.user.js
