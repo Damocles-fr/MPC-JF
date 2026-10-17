@@ -18,7 +18,7 @@
 > - **Works remotely too**: the new **Jellyfin stream** mode (default) plays through Jellyfin, at home or away. No NAS share or mapped drive needed.
 > - **Your choice**: Jellyfin stream or download link (Jellyfin API), the **Windows file path** (local disk, NAS share), or the file path with the stream as fallback.
 > - **All settings in one window**: player, fullscreen, how videos open, browser, Jellyfin address, browser script, NAS folders. Change anything later : Start menu → `PlayBridge Settings`.
->
+> - Older MPC-JF installations and scripts are upgraded automatically.
 
 ### ▶︎ Features
 - **Keep the original Jellyfin Web interface** (Jellyfin 12 included) with all your plugins, themes and userscripts: PlayBridge only changes what happens when you press Play.
@@ -30,7 +30,7 @@
 - Jellyfin Web through a browser script (Firefox, Chrome, Edge, Brave...).
 - **Jellyfin Media Player / Jellyfin Desktop** (Windows app) through the JavaScript Injector plugin (experimental).
 - **All settings in one window** (Start menu → PlayBridge Settings), remembered for next time. Uninstall from the same window.
-- Compatible with Jellyfin 12+ (and older versions). Older MPC-JF installations and scripts are upgraded automatically.
+- Compatible with Jellyfin 12+ (and older versions).
 
 #### Requirements & limitations
 - Windows 10 or 11.
