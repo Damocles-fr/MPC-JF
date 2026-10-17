@@ -50,7 +50,7 @@
 - Extract it anywhere (your Downloads folder is fine).
 - ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript.
 
-### 2. Full setup guide. Double-click `Install.cmd` (page 1: settings)
+### 2. Full setup guide
 
 | Setting | What to do |
 |---|---|
