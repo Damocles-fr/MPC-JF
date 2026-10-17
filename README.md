@@ -45,10 +45,10 @@
 # Installation
 
 ### Quick installation **PlayBridge**
-- [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) (latest version, [release page](https://github.com/Damocles-fr/MPC-JF/releases/latest))
-- ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply.
-- Extract it anywhere (your Downloads folder is fine).
-- ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript.
+- [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) latest
+- ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply
+- Extract it anywhere
+- ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript
 
 ### Full setup guide
 
