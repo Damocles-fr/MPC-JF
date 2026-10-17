@@ -254,10 +254,11 @@ In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-
 
 ---
 
+### Transparency
+- Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
+- Prefer a version without vibe-coding? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/tag/12.1.0), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.
+
 ### Need Help?
 - Don't hesitate to open an [issue](https://github.com/Damocles-fr/MPC-JF/issues) (attach your `PlayBridge.log`, it never contains your Jellyfin token)
 - **DM me**: https://forum.jellyfin.org/u-damocles
 - GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
-
-###### Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
-###### Prefer a version that isn't vibe-coded? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/tag/12.1.0), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.
