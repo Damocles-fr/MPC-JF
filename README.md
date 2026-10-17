@@ -100,7 +100,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 - Back in **Dashboard → JS Injector**, replace `PUT_DEVICE_ID_HERE` with the copied DeviceId (keep the quotes), **Save**. Restart the app.
 
 ###### If the DeviceId box doesn't appear, find `deviceId` in the app log: `%LOCALAPPDATA%\JellyfinMediaPlayer\logs\JellyfinMediaPlayer.log` or `%LOCALAPPDATA%\jellyfin-desktop\Logs\jellyfin-desktop.log` (paste the path in the File Explorer address bar, open with Notepad, `Ctrl + F` → `deviceId`, copy the long string after it). The unofficial Jellium Desktop client doesn't seem to support external scripts.
-###### Alternative for the yellow button in the app: Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
+###### Alternative for the yellow button in the app (displayed to all clients): Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
 ### 5. Done!
 Change anything later: **Start menu → `PlayBridge Settings` (or run `Install.cmd` again)**. The setup reopens with your last choices.
