@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         MPC-JF - MPC launcher for Jellyfin
-// @namespace    https://github.com/Damocles-fr/MPCJF/
+// @namespace    https://github.com/Damocles-fr/PlayBridge/
 // @version      12.1.0
-// @updateURL    https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
-// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/MPCJF.user.js
+// @updateURL    https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJF.user.js
+// @downloadURL  https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/MPCJF.user.js
 // @description  Intercept Play/Resume clicks in Jellyfin to launch medias with the MPCJF.ps1 script
 // @author       Damocles-fr
 // @match        http://localhost:8096/*
