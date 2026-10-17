@@ -44,13 +44,13 @@
 
 # Installation
 
-### 1. Quick installation **PlayBridge 13.0.1**
+### Quick installation **PlayBridge 13.0.1**
 - [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) (latest version, [release page](https://github.com/Damocles-fr/MPC-JF/releases/latest))
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply.
 - Extract it anywhere (your Downloads folder is fine).
 - ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript.
 
-### 2. Full setup guide
+### Full setup guide
 
 | Setting | What to do |
 |---|---|
@@ -66,7 +66,7 @@
 > - If Windows shows "Windows protected your PC": click **More info** → **Run anyway**.
 > - **PotPlayer** can't be started in fullscreen directly by a command-line option: set it in PotPlayer → Preferences → General → Startup → Window Size.
 
-### 3. Page 2: your browser (required)
+### Page 2: your browser (required)
 A browser never lets a program install a script by itself, so these clicks are yours. At the top, choose what **you open Jellyfin with**: a web browser (your default one is preselected, **Browse...** for any other), or the Jellyfin desktop app (see step 4). The page has a button for each step and opens everything in that browser.
 
 | Step | What to do |
@@ -82,7 +82,7 @@ Extra steps appear only when needed (auto-update with another address than `loca
 - **Off (default, recommended)**: the installed script is a copy prepared for this PC, with your Jellyfin address and your stream setting inside. It doesn't update itself: after a PlayBridge update, open **Start menu → PlayBridge Settings**, page 2, and install it again.
 - **On**: the script is installed from GitHub and updates itself. Your address is not in that copy, so if Jellyfin is not at `http://localhost:8096`, add it once in Violentmonkey (the setup shows the exact line with a **Copy** button): Dashboard → PlayBridge → **`</>`** → **Settings** tab → **@match** rules → add `http://192.168.x.xx:8096/*` (keep the `*`). Tampermonkey: Settings tab → Includes/Excludes → User matches. With a stream mode, also turn on stream links (step shown by the setup).
 
-### 4. (Experimental) Jellyfin Media Player / Jellyfin Desktop (Windows app)
+### (Experimental) Jellyfin Media Player / Jellyfin Desktop (Windows app)
 Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: the steps adapt (no browser extension, the script is added on your server for this app only).
 - Install the [JavaScript Injector plugin](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) on your Jellyfin server (a server restart may be required).
 - Jellyfin → **Admin Dashboard → JS Injector → Add Script**. Name it PlayBridge, paste the script (**Copy the script** button; it carries your stream setting), check **Requires Authentication** and **Enabled**, **Save**.
@@ -92,7 +92,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 ###### If the DeviceId box doesn't appear, find `deviceId` in the app log: `%LOCALAPPDATA%\JellyfinMediaPlayer\logs\JellyfinMediaPlayer.log` or `%LOCALAPPDATA%\jellyfin-desktop\Logs\jellyfin-desktop.log` (paste the path in the File Explorer address bar, open with Notepad, `Ctrl + F` → `deviceId`, copy the long string after it). The unofficial Jellium Desktop client doesn't seem to support external scripts.
 ###### Alternative for the yellow button in the app (displayed to all clients): Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
-### 5. Done!
+### Done!
 Change anything later: **Start menu → `PlayBridge Settings` (or run `Install.cmd` again)**. The setup reopens with your last choices.
 
 ---
