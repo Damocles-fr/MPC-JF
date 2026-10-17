@@ -104,7 +104,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 ###### Alternative for the yellow button in the app: Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
 ### 5. Done!
-Change anything later: **Start menu → `PlayBridge Settings` (or run `` again)**. The setup reopens with your last choices. The **Help** button opens this page.
+Change anything later: **Start menu → `PlayBridge Settings` (or run `Install.cmd` again)**. The setup reopens with your last choices.
 
 ---
 
@@ -183,7 +183,7 @@ Plain lines in `%LOCALAPPDATA%\PlayBridge\PlayBridge.ini`, section `[Paths]`: `J
      ```
 
 ## Uninstall
-** Start menu → `PlayBridge Settings` (or run `Install.cmd` again) → Uninstall...**. It also offers to remove an old `MPCJF.reg` registration. Then remove the script from Violentmonkey.
+Start menu → `PlayBridge Settings` (or run `Install.cmd` again) → Uninstall.... It also offers to remove an old `MPCJF.reg` registration. Then remove the script from Violentmonkey.
 
 ---
 
