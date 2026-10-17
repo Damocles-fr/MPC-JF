@@ -46,7 +46,7 @@
 # Installation
 
 ### Quick installation **PlayBridge**
-- [PlayBridge.zip](https://github.com/Damocles-fr/MPC-JF/releases/latest/download/PlayBridge.zip) latest
+- [PlayBridge.zip](https://github.com/Damocles-fr/PlayBridge/releases/latest/download/PlayBridge.zip) latest
 - ▸ **Right-click the downloaded .zip → Properties → check `Unblock`** → Apply
 - Extract it anywhere
 - ▸ Double-click `Install.cmd`. Most users just follow the in-app instructions to set up, choose, and install the userscript
@@ -91,7 +91,7 @@ Choose **Jellyfin Media Player / Jellyfin Desktop app** at the top of page 2: th
 - Back in **Dashboard → JS Injector**, replace `PUT_DEVICE_ID_HERE` with the copied DeviceId (keep the quotes), **Save**. Restart the app.
 
 ###### If the DeviceId box doesn't appear, find `deviceId` in the app log: `%LOCALAPPDATA%\JellyfinMediaPlayer\logs\JellyfinMediaPlayer.log` or `%LOCALAPPDATA%\jellyfin-desktop\Logs\jellyfin-desktop.log` (paste the path in the File Explorer address bar, open with Notepad, `Ctrl + F` → `deviceId`, copy the long string after it). The unofficial Jellium Desktop client doesn't seem to support external scripts.
-###### Alternative for the yellow button in the app (displayed to all clients): Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/MPC-JF/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
+###### Alternative for the yellow button in the app (displayed to all clients): Add Script, paste [PlayBridgeIcon.user.js](https://raw.githubusercontent.com/Damocles-fr/PlayBridge/refs/heads/main/PlayBridgeIcon.user.js), check **Enabled**, **Save**.
 
 ### Done!
 Change anything later: **Start menu → `PlayBridge Settings` (or run `Install.cmd` again)**. The setup reopens with your last choices.
@@ -245,16 +245,16 @@ In the repository only: ``` MPCJF.user.js ```, ``` MPCJFicon.user.js ``` : auto-
 
 ---
 > [!WARNING]
-> **The only official repository is https://github.com/Damocles-fr/MPC-JF**
+> **The only official repository is https://github.com/Damocles-fr/PlayBridge** (or https://github.com/Damocles-fr/MPC-JF)
 >
 > Malicious clones sometimes rank high on Google and distribute ZIP files containing malware.
 > Please report any fake repositories: "Report repository" (middle of the right sidebar) → Malware
 
 ### Transparency
 - Since version 13, the development of PlayBridge is heavily LLM-assisted (Claude Opus and Fable), reviewed and tested by the author.
-- Prefer a version without vibe-coding? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/MPC-JF/releases/tag/12.1.0), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/MPC-JF/tree/backup/beforeLLM) branch.
+- Prefer a version without vibe-coding? The previous stable version, [MPC-JF 12.1](https://github.com/Damocles-fr/PlayBridge/releases/tag/12.1.0), is still available (manual installation, NAS videos only through mapped Windows drives, see [OLD-README.md](./OLD-README.md)). Its code is also kept in the [backup/beforeLLM](https://github.com/Damocles-fr/PlayBridge/tree/backup/beforeLLM) branch.
 
 ### Need Help?
-- Don't hesitate to open an [issue](https://github.com/Damocles-fr/MPC-JF/issues) (attach your `PlayBridge.log`, it never contains your Jellyfin token)
+- Don't hesitate to open an [issue](https://github.com/Damocles-fr/PlayBridge/issues) (attach your `PlayBridge.log`, it never contains your Jellyfin token)
 - **DM me**: https://forum.jellyfin.org/u-damocles
 - GitHub with my other Jellyfin projects: https://github.com/Damocles-fr/
